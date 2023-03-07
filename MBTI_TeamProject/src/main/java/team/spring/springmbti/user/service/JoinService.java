@@ -5,8 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import team.spring.springmbti.user.dao.MemberDao;
-import team.spring.springmbti.user.vo.Member;
+import team.spring.springmbti.user.dao.UserDao;
+import team.spring.springmbti.user.vo.User;
 
 
 
@@ -14,17 +14,17 @@ import team.spring.springmbti.user.vo.Member;
 public class JoinService {
 	
 	@Autowired
-	private MemberDao dao;
+	private UserDao dao;
 	
 	Logger log = LogManager.getLogger("case3");
 	
-	public boolean idCheck(String memberId) {
+	public boolean idCheck(String userId) {
 		
-		Member member = dao.idCheck(memberId);
+		User user = dao.idCheck(userId);
 		
 		boolean canUse = false;
 		
-		if(member==null)
+		if(user==null)
 		{
 			log.debug("중복된 아이디 없음");
 			canUse=true;

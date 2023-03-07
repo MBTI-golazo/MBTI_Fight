@@ -4,22 +4,22 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.spring.springmbti.user.vo.Member;
+import team.spring.springmbti.user.vo.User;
 
 
 
 @Repository
-public class MemberDaoImpl implements MemberDao {
+public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SqlSession session;
 	
 	@Override
-	public Member idCheck(String memberId) {
+	public User idCheck(String userId) {
 		
-		Member member = session.selectOne("myMember.checkid",memberId);
+		User user = session.selectOne("myUser.checkid",userId);
 		
-		return member;
+		return user;
 	}
 
 }
