@@ -24,7 +24,7 @@
    <select id="selectAll" resultMap="result">
        <![CDATA[   
          SELECT bisbn, btitle, bauthor, bprice
-         FROM book         
+         FROM books       
       ]]>
    </select>
 
