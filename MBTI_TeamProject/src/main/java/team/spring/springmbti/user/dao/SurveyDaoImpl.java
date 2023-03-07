@@ -9,17 +9,17 @@ import team.spring.springmbti.user.vo.Member;
 
 
 @Repository
-public class SurveyDaoImpl implements MemberDao {
+public class SurveyDaoImpl implements SurveyDao {
 	
 	@Autowired
 	private SqlSession session;
 	
-	@Override
-	public Member idCheck(String memberId) {
-		
-		Member member = session.selectOne("myMember.checkid",memberId);
-		
-		return member;
-	}
+//	@Override
+//	public Member idCheck(String memberId) {
+//		
+//		Member member = session.selectOne("myMember.checkid",memberId);
+//		
+//		return member;
+//	}
 
 }

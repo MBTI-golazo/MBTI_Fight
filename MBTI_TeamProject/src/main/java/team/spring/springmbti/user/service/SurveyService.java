@@ -18,21 +18,21 @@ public class SurveyService {
 	
 	Logger log = LogManager.getLogger("case3");
 	
-	public boolean idCheck(String memberId) {
-		
-		Member member = dao.idCheck(memberId);
-		
-		boolean canUse = false;
-		
-		if(member==null)
-		{
-			log.debug("중복된 아이디 없음");
-			canUse=true;
-		}else {
-			log.debug("아이디 중복");
-		}
-		
-		return canUse;
-	}
+//	public boolean idCheck(String memberId) {
+//		
+//		Member member = dao.idCheck(memberId);
+//		
+//		boolean canUse = false;
+//		
+//		if(member==null)
+//		{
+//			log.debug("중복된 아이디 없음");
+//			canUse=true;
+//		}else {
+//			log.debug("아이디 중복");
+//		}
+//		
+//		return canUse;
+//	}
 
 }
