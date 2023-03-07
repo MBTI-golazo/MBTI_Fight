@@ -4,6 +4,8 @@ import team.spring.springmbti.user.vo.User;
 
 public interface UserDao {
 
-	User idCheck(String userId);
+	User emailCheck(String userEmail);
+
+	int insertUser(User user);
 	
 }

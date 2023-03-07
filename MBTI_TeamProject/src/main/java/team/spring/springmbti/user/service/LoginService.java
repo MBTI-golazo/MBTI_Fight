@@ -8,31 +8,37 @@ import org.springframework.stereotype.Service;
 import team.spring.springmbti.user.dao.UserDao;
 import team.spring.springmbti.user.vo.User;
 
-
-
 @Service
-public class JoinService {
+public class LoginService {
 	
 	@Autowired
 	private UserDao dao;
 	
 	Logger log = LogManager.getLogger("case3");
-	
-	public boolean idCheck(String userId) {
-		
-		User user = dao.idCheck(userId);
-		
-		boolean canUse = false;
-		
-		if(user==null)
-		{
-			log.debug("중복된 아이디 없음");
-			canUse=true;
+
+	public void userRegistration(User user) {
+		int count = dao.insertUser(user);
+		if(count==1) {
+			log.debug("유저 등록 성공");
 		}else {
-			log.debug("아이디 중복");
+			log.debug("유저 등록 실패");
 		}
 		
-		return canUse;
 	}
 
+	public boolean checkEmail(String userEmail) {
+		
+		boolean canRegister = false;
+		
+		User user = dao.emailCheck(userEmail);
+		
+		if(user==null) {
+			canRegister=true;
+		}
+		
+		return canRegister;
+	}
+	
+	
+	
 }
