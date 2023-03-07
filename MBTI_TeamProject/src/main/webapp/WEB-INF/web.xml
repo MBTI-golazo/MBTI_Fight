@@ -12,7 +12,10 @@
 	    <welcome-file-list>
         <welcome-file>/resources/main.html</welcome-file>
     </welcome-file-list>
-
+	
+	<welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
