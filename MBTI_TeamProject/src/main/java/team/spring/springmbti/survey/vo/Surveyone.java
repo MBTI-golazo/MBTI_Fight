@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Surveyone {
 	
-	private int surveynum;
+	private int snum;
 	private int qnum;
 	private int score;
 	
