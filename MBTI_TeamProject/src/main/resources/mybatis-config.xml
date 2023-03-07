@@ -21,6 +21,7 @@
 	 	<!-- <typeAlias type="my.spring.springweb.sample11.vo.Book" alias="Book"/> -->
 	 	<typeAlias type="team.spring.springmbti.user.vo.Member" alias="Member"/>
 	 	<!-- <typeAlias type="board.vo.Board" alias="Board"/> -->
+	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="Survey"/>
 	 </typeAliases>
 
 

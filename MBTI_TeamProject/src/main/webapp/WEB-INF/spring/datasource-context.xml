@@ -32,6 +32,7 @@
       <property name="mapperLocations">
          <list>
             <value>classpath:mappers/MemberMapper.xml</value>
+            <value>classpath:mappers/SurveyMapper.xml</value>
          </list>
       </property>
    </bean>

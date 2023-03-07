@@ -13,8 +13,8 @@ import team.spring.springmbti.user.vo.Member;
 @Service
 public class JoinService {
 	
-	@Autowired
-	private MemberDao dao;
+//	@Autowired
+//	private MemberDao dao;
 	
 	Logger log = LogManager.getLogger("case3");
 	
