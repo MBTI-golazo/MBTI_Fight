@@ -21,7 +21,7 @@
       <result property="bookPrice" column="bprice" />
    </resultMap>
 
-   <select id="sselectAll" resultMap="result">
+   <select id="selectAll" resultMap="result">
        <![CDATA[   
          SELECT bisbn, btitle, bauthor, bprice
          FROM books       
