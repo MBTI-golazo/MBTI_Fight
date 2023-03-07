@@ -31,8 +31,8 @@ rossorigin="anonymous"></script>
     <!-- user email이 primary로 DB에 저장되어 있으면  토큰, 이메일, 닉네임, 프로필 이미지 가져오는데 
     	db에 없으면 저장이 되는데 , 여기서 확인을 하고  -->
     
-    <%-- <c:choose>
-      <c:when test="${ !=null }">
+    <c:choose>
+      <c:when test="${ !canRegister }">
          <button id="deleteBtn" disabled="disabled">삭제하기</button>
       </c:when>
       
@@ -40,7 +40,7 @@ rossorigin="anonymous"></script>
          <button id="deleteBtn">삭제하기</button>
       </c:otherwise>
       
-   </c:choose> --%>
+   </c:choose>
    
 	<!-- 모달넣어야 하고  -->
 	
