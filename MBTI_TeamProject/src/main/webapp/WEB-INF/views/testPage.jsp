@@ -2,13 +2,49 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<meta charset="UTF-8">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" 
+integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+rossorigin="anonymous"></script>
+
+
+<script src="../js/mypage.js"></script>
+
 </head>
 <body>
-    <a href="https://kauth.kakao.com/oauth/authorize?client_id=26c4c3e8460d88a695130b78307910f4&redirect_uri=http://localhost:8080/springmbti/login&response_type=code">로그인</a>
+    
+    <div class="box1" style="font-family:verdana; text-align: left"> 
+		<h2>나만의  MBTI 캐릭터 만들기</h2> <h3 style="font-family:courier">모두 덤벼라!</h3>
+		<h1>MBTI 미니 대전</h1>
+	</div>
+    <!-- 개인 캐릭터 넣기, 없으면 물음표 , 있으면 캐릭터로 이미지 띄우고 -->
+    
+    <br><br>
+    <!-- user email이 primary로 DB에 저장되어 있으면  토큰, 이메일, 닉네임, 프로필 이미지 가져오는데 
+    	db에 없으면 저장이 되는데 , 여기서 확인을 하고  -->
+    
+    <%-- <c:choose>
+      <c:when test="${ !=null }">
+         <button id="deleteBtn" disabled="disabled">삭제하기</button>
+      </c:when>
+      
+      <c:otherwise>
+         <button id="deleteBtn">삭제하기</button>
+      </c:otherwise>
+      
+   </c:choose> --%>
+   
+	<!-- 모달넣어야 하고  -->
+	
+    <button>설문조사</button>
+    <button>대결하기</button>
 </body>
 </html>

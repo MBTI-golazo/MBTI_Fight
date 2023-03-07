@@ -7,8 +7,10 @@ import java.util.Locale;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,6 +55,16 @@ public class HomeController {
 		}
 		
 		return "home";
+	}
+	
+	@RequestMapping(value="/mbti_character/delete")
+	@DeleteMapping
+	public ResponseEntity<?> method02(Integer characterNum ){
+		log.debug("delete방식으로 호출이 되었어요");
+		log.debug(characterNum);
+
+		
+		return null;
 	}
 	
 }
