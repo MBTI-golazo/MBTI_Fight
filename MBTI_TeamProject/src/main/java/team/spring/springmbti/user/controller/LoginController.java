@@ -61,7 +61,7 @@ public class LoginController {
         	log.debug("이미 생성된 아이디가 존재합니다.");
         }
         
-        return "testPage";
+        return "myPage";
     }
 	 
 //	@RequestMapping(value = "/home", method = RequestMethod.GET)
