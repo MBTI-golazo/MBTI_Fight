@@ -8,6 +8,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="resources/css/resultpage.css">
+    <script>
+	    function popuptest(){
+	    	
+	    	alert("test")
+	        var url = "http://localhost:8080/springmbti/popuptest.jsp";
+	        var name = "popup test";
+	        var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	        window.open(url, name, option);
+	    }
+    </script>
     <style>
 ul {
 	display: table;
@@ -60,7 +70,7 @@ button.myPage_btn {
     </div>
     <div class="btn_div">
     	<button class="share_btn">공유하기</button><br>
-    	<button class="battle_btn">대전하기</button><br>
+    	<button class="battle_btn" onclick="popuptest()">대전하기</button><br>
     	<button class="myPage_btn">마이페이지</button>
     </div>
     

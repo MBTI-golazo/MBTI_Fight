@@ -32,6 +32,7 @@
       <property name="mapperLocations">
          <list>
             <value>classpath:mappers/UserMapper.xml</value>
+            <value>classpath:mappers/CharacterMapper.xml</value>
          </list>
       </property>
    </bean>
