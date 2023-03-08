@@ -18,7 +18,6 @@ import team.spring.springmbti.user.vo.User;
 
 
 @Controller
-@SessionAttributes(value= {"myModel"})
 public class LoginController {
 	
 	@Autowired
@@ -34,7 +33,7 @@ public class LoginController {
 	
 	
 	@GetMapping("login")
-    public String home(@RequestParam(value = "code", required = false) String code,@ModelAttribute("myModel") Model model) throws Exception{
+    public String home(@RequestParam(value = "code", required = false) String code,Model model) throws Exception{
         log.debug("#########" + code);
         String access_Token = kakaoservice.getKakaoAccessToken(code);
         HashMap<String, Object> userInfo = kakaoservice.getUserInfo(access_Token);

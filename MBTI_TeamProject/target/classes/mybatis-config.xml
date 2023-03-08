@@ -21,7 +21,6 @@
 	 	
 	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="User"/>
 	 	<typeAlias type="team.spring.springmbti.user.vo.MBTIResult" alias="MBTIResult"/>
-	 	<typeAlias type="team.spring.springmbti.user.vo.CharacterInfo" alias="CharacterInfo"/>
 	 	
 	 </typeAliases>
 
