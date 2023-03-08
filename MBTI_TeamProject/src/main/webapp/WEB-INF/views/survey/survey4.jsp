@@ -9,7 +9,10 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style>
-
+label {
+    padding-right: 10px;
+    font-size: 1rem;
+}
 
 
 </style>
@@ -61,7 +64,7 @@
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<form action="/springmbti/surveytwo" method="post">
+	<form action="" method="post">
 		<input type="submit" value="제출">
 	</form>
 	</div>	

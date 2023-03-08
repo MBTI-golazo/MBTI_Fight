@@ -9,7 +9,10 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style>
-
+label {
+    padding-right: 10px;
+    font-size: 1rem;
+}
 
 
 </style>
@@ -69,7 +72,7 @@
 <script>
 function surveyone1() {
 	$.ajax({
-		url : "surveyone1",
+		url : "surveytwo1",
 		type : "POST",
 		async : "false",
 		dataType : "json",

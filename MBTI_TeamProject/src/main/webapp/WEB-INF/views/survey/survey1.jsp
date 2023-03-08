@@ -9,16 +9,22 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style>
-
-
-
+label {
+    padding-right: 10px;
+    font-size: 1rem;
+}
 </style>
 </head>
 <body>
-	<div class="box1" style="font-family:verdana; text-align: center"> 
-      <h2>나만의  MBTI 캐릭터 만들기</h2>
+	<div class="box0" style="font-family:verdana; text-align: center"> 
+      <h2>1/5</h2>
       <h3 style="font-family:courier">모두 덤벼라!</h3>
    </div>
+   <div class="box1" style="font-family:verdana; text-align: right">
+   <label for="file">E</label>
+
+<progress id="file" max="100" value="70">  </progress>
+</div>
    <br>
 	<div class="box2" style="font-family:verdana; text-align: center">
 	<h3>1. 친구에게 먼저 만나자고 연락하는 편이다.</h3>
@@ -61,7 +67,7 @@
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<form action="" method="post">
+	<form action="/springmbti/surveytwo" method="post">
 		<input type="submit" value="제출">
 	</form>
 	</div>	
@@ -69,7 +75,7 @@
 <script>
 function surveyone1() {
 	$.ajax({
-		url : "surveytwo1",
+		url : "surveyone1",
 		type : "POST",
 		async : "false",
 		dataType : "json",

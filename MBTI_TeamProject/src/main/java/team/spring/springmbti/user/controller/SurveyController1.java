@@ -22,19 +22,19 @@ import team.spring.springmbti.user.service.SurveyService;
  * Handles requests for the application home page.
  */
 @Controller
-public class SurveyControllerOne {
+public class SurveyController1 {
 	
 	@Autowired
 	private SurveyService surveyservice;
 	
 	Logger log = LogManager.getLogger("case3");
 	
-	@PostMapping("survey")
+	@PostMapping("surveyone")
 	public String handler() {
 		log.debug("handler1() 호출 - 일단연습");
 		
 		
-		return "survey/surveyOne";
+		return "survey/survey1";
 	}
 	
 	@PostMapping("surveyone1")
@@ -42,7 +42,7 @@ public class SurveyControllerOne {
 		log.debug("handler1() 호출 - 일단연습");
 		
 		
-		return "survey/surveyOne";
+		return "survey/survey1";
 	}
 	
 //	@GetMapping("login")
