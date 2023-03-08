@@ -7,14 +7,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="resources/css/resultpage.css">
+    <style>
+ul {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* button.share_btn {
+	background-color: grey;
+	width: 200px;
+	height: 30px;
+}
+
+button.battle_btn {
+	background-color: skyblue;
+	width: 200px;
+	height: 30px;
+}
+
+button.myPage_btn {
+	background-color: lightgrey;
+	width: 200px;
+	height: 30px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px
+		rgba(0, 0, 0, 0.06);
+	cursor: pointer;
+	transition: 0.5s;
+} */
+</style>
 </head>
 <body>
-    <h1>이곳은 결과 페이지 입니다.</h1>
-    <h3>캐릭터 이미지</h3>
-    <h3>MBTI결과</h3>
-    <div>결과 코멘트</div>
-    <button>공유하기</button>
-    <button>대전하기</button>
-    <button>마이페이지</button>
+    <div align="center"><h3>당신의 MBTI는...</h3></div>
+    <div align="center"><h3>????입니다.</h3></div>
+    <div align="center"><h1>당신의 캐릭터는 ???입니다.</h1></div>
+    
+    <h3><CENTER>
+		<img
+		width="300"
+		src="resources/img/00.jpg">
+	</CENTER></h3>
+    <div>
+    	<ul>
+    		<li>
+    			결과 코멘트 
+    		</li>
+    		<li>
+    			결과 코멘트 2
+    		</li>
+    	</ul>
+    </div>
+    <div class="btn_div">
+    	<button class="share_btn">공유하기</button><br>
+    	<button class="battle_btn">대전하기</button><br>
+    	<button class="myPage_btn">마이페이지</button>
+    </div>
+    
 </body>
 </html>
