@@ -52,7 +52,7 @@ public class LoginController {
         String userEmail = (String) userInfo.get("email");
         String userProfile = (String) userInfo.get("profile_image");
         
-//        User user = new User();
+//      User user = new User();
         user.setUserName(userName);
         user.setUserEmail(userEmail);
         user.setUserProfile(userProfile);
