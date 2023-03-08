@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +31,7 @@ public class LoginController {
 	
 	
 	@GetMapping("login")
-    public String home(@RequestParam(value = "code", required = false) String code) throws Exception{
+    public String home(@RequestParam(value = "code", required = false) String code,Model model) throws Exception{
         log.debug("#########" + code);
         String access_Token = kakaoservice.getKakaoAccessToken(code);
         HashMap<String, Object> userInfo = kakaoservice.getUserInfo(access_Token);
@@ -49,6 +50,8 @@ public class LoginController {
         user.setUserProfile(userProfile);
         
         boolean canRegister = loginservice.checkEmail(userEmail);
+        
+        model.addAttribute("canRegister",canRegister);
         
         if(canRegister) {
         	loginservice.userRegistration(user);

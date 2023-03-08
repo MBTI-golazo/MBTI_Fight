@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
 		}else {
 			log.debug("유저 등록 실패, 롤백");
 		}
-		
+		session.close();
 		return count;
 	}
 

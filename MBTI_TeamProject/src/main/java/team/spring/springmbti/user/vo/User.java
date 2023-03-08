@@ -15,6 +15,7 @@ public class User {
 	private String userMBTI;
 	private int userWin;
 	private int userDefeat;
+	private int userPoint;
 	private int userI;
 	private int userE;
 	private int userS;
@@ -23,4 +24,5 @@ public class User {
 	private int userF;
 	private int userP;
 	private int userJ;
+	private int userItem;
 }
