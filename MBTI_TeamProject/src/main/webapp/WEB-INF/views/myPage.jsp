@@ -30,21 +30,27 @@ rossorigin="anonymous"></script>
     <br><br>
     <!-- user email이 primary로 DB에 저장되어 있으면  토큰, 이메일, 닉네임, 프로필 이미지 가져오는데 
     	db에 없으면 저장이 되는데 , 여기서 확인을 하고  -->
+
+	<form action="/springmbti/survey1" method="post">
+    		<input type="submit" value="설문조사">
+    </form>
     
-    <c:choose>
-      <c:when test="${ !canRegister }">
-         <button id="deleteBtn" disabled="disabled">삭제하기</button>
-      </c:when>
-      
-      <c:otherwise>
-         <button id="deleteBtn">삭제하기</button>
-      </c:otherwise>
-      
-   </c:choose>
-   
-	<!-- 모달넣어야 하고  -->
-	
-    <button>설문조사</button>
-    <button>대결하기</button>
+    <!-- canregister는 가입이고 -->
+	 <c:choose>
+	      <c:when test="${ !canRegister }">
+	         <button id="deleteBtn" disabled="disabled">삭제하기</button>
+	         <button id="fightStartBtn" disabled="disabled">대결하기</button>
+	      </c:when>
+	      
+	      <c:when test="${ characterNum }">
+	         <button id="deleteBtn">삭제하기</button>
+	         <button id="fightStartBtn">대결하기</button>
+	      </c:when>
+	 </c:choose>
+	<!-- 삭제 하시겠습니까? 모달넣어야 하고  -->
+	<!-- 캐릭터 넘버가 맞으면 삭제하기와 대결하기 버튼이 활성화가 되고 설문조사 버튼이 비활성화-->
+
+  
+
 </body>
 </html>
