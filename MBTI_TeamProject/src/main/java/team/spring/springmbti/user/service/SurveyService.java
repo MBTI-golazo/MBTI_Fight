@@ -5,8 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import team.spring.springmbti.user.dao.MemberDao;
-import team.spring.springmbti.user.vo.Member;
+
 
 
 

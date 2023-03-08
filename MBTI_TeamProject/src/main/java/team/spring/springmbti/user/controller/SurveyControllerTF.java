@@ -1,21 +1,11 @@
 package team.spring.springmbti.user.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import team.spring.springmbti.user.service.JoinService;
 import team.spring.springmbti.user.service.SurveyService;
 
 /**
@@ -29,12 +19,12 @@ public class SurveyControllerTF {
 	
 	Logger log = LogManager.getLogger("case3");
 	
-	@PostMapping("survey")
+	@PostMapping("surveythree")
 	public String handler() {
 		log.debug("handler1() 호출 - 일단연습");
 		
 		
-		return "survey/surveyThree";
+		return "survey/survey3";
 	}
 	
 	@PostMapping("surveythree1")
@@ -42,7 +32,7 @@ public class SurveyControllerTF {
 		log.debug("handler1() 호출 - 일단연습");
 		
 		
-		return "survey/surveyThree";
+		return "survey/survey3";
 	}
 	
 //	@GetMapping("login")

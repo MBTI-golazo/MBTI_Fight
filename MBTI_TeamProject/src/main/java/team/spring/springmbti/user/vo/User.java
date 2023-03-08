@@ -1,33 +1,4 @@
-<<<<<<< HEAD
-package team.spring.springmbti.user.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
-	
-	private String userEmail;
-	private String userName;
-	private String userProfile;
-	private String userMBTI;
-	private int userCharacter;
-	private int userWin;
-	private int userDefeat;
-	private int userI;
-	private int userE;
-	private int userS;
-	private int userN;
-	private int userT;
-	private int userF;
-	private int userP;
-	private int userJ;
-	
-}
-=======
 package team.spring.springmbti.user.vo;
 
 import lombok.AllArgsConstructor;
@@ -56,4 +27,4 @@ public class User {
 	private int userJ;
 	private int userItem;
 }
->>>>>>> refs/remotes/origin/siha
+

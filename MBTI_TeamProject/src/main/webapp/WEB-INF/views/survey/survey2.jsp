@@ -18,13 +18,17 @@ label {
 </style>
 </head>
 <body>
-	<div class="box1" style="font-family:verdana; text-align: center"> 
-      <h2>나만의  MBTI 캐릭터 만들기</h2>
-      <h3 style="font-family:courier">모두 덤벼라!</h3>
+	<div class="box0" style="font-family:verdana; text-align: center"> 
+      <h1>2/4</h1>
+      <h3 style="font-family:courier">S or N</h3>
    </div>
+   <div class="box1" style="font-family:verdana; text-align: center">
+   <label for="file">S</label>
+
+<progress id="file" max="100" value="50"> </progress>
    <br>
 	<div class="box2" style="font-family:verdana; text-align: center">
-	<h3>1. 친구에게 먼저 만나자고 연락하는 편이다.</h3>
+	<h3>1. 사후세계에 대한 질문이 흥미롭다고 생각한다.</h3>
 	<input type="radio" name="myCheckBox1" value="0">매우 아니다 
 	<input type="radio" name="myCheckBox1" value="1">아니다
 	<input type="radio" name="myCheckBox1" value="2">그렇다
@@ -32,7 +36,7 @@ label {
 	</div>
 	<br>
 	<div class="box3" style="font-family:verdana; text-align: center">
-	<h3>2. 대부분의 시간을 혼자서 일할 수 있는 직업을 원한다.</h3>
+	<h3>2. 이론 중심의 토론에는 관심이 없으며 원론적인 이야기는 지루하다고 생각한다.</h3>
 	<input type="radio" name="myCheckBox2" value="0">매우 아니다 
 	<input type="radio" name="myCheckBox2" value="1">아니다
 	<input type="radio" name="myCheckBox2" value="2">그렇다
@@ -40,7 +44,7 @@ label {
 	</div>
 	<br>
 	<div class="box4" style="font-family:verdana; text-align: center">
-	<h3>3. 관심이 가는 사람에게 다가가서 대화를 시작하기가 어렵지 않다.</h3>
+	<h3>3. 관심사가 너무 많아 다음에 어떤 일을 해야 할지 모를 때가 있다.</h3>
 	<input type="radio" name="myCheckBox3" value="0">매우 아니다 
 	<input type="radio" name="myCheckBox3" value="1">아니다
 	<input type="radio" name="myCheckBox3" value="2">그렇다
@@ -48,7 +52,7 @@ label {
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<h3>4. 단체 활동에 참여하는 일을 즐긴다.</h3>
+	<h3>4. 자신만큼 효율적이지 못한 사람을 보면 짜증이 난다.</h3>
 	<input type="radio" name="myCheckBox4" value="0">매우 아니다 
 	<input type="radio" name="myCheckBox4" value="1">아니다
 	<input type="radio" name="myCheckBox4" value="2">그렇다
@@ -56,7 +60,7 @@ label {
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<h3>5. 혼자보다는 다른 사람과 시간을 보내고 싶어한다.</h3>
+	<h3>5. 철학적인 질문에 대해 깊게 생각하는 일은 시간 낭비라고 생각한다.</h3>
 	<input type="radio" name="myCheckBox5" value="0">매우 아니다 
 	<input type="radio" name="myCheckBox5" value="1">아니다
 	<input type="radio" name="myCheckBox5" value="2">그렇다
@@ -64,7 +68,7 @@ label {
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<form action="" method="post">
+	<form action="surveythree" method="post">
 		<input type="submit" value="제출">
 	</form>
 	</div>	

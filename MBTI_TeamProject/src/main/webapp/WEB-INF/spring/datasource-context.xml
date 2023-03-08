@@ -31,12 +31,12 @@
          value="classpath:mybatis-config.xml" />
       <property name="mapperLocations">
          <list>
-<<<<<<< HEAD
-            <value>classpath:mappers/MemberMapper.xml</value>
+
+            
             <value>classpath:mappers/SurveyMapper.xml</value>
-=======
+
             <value>classpath:mappers/UserMapper.xml</value>
->>>>>>> refs/remotes/origin/siha
+
          </list>
       </property>
    </bean>
