@@ -57,17 +57,17 @@ public class SurveyController1 {
 	}	
 	
 	@PostMapping("surveyone3")
-	public void handler3(HttpServletRequest request3, HttpServletResponse response3) throws ServletException, IOException {
+	public void handler3(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
-		request3.setCharacterEncoding("UTF-8");
-		int qnum3 = Integer.parseInt(request3.getParameter("qnum"));
-		int onum3 = Integer.parseInt(request3.getParameter("onum"));
+		request.setCharacterEncoding("UTF-8");
+		int qnum = Integer.parseInt(request.getParameter("qnum"));
+		int onum = Integer.parseInt(request.getParameter("onum"));
 
-		Gson gson3 = new Gson();
-		JsonObject jsonObject3 = new JsonObject();
-		jsonObject3.addProperty("qnum3", qnum3);
-		jsonObject3.addProperty("onum3", onum3);
-		String find3 = gson3.toJson(jsonObject3);
-		response3.getWriter().write(find3);
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("qnum", qnum);
+		jsonObject.addProperty("onum", onum);
+		String find = gson.toJson(jsonObject);
+		response.getWriter().write(find);
 	}
 }

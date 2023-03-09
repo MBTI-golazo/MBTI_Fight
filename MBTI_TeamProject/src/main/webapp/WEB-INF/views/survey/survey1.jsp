@@ -91,8 +91,11 @@ $("input[name=myRadio1]").mouseup(function() {
 	
 }).change(function () {
 	var changenum = $('input[name=myRadio1]:checked').val();
-	var eoldValue = $('#efile').attr("value");
-	var ioldValue = $('#ifile').attr("value");
+	console.log(typeof changenum);
+	var eoldValue = Number($('#efile').attr("value"));
+	console.log(typeof eoldValue);
+	var ioldValue = Number($('#ifile').attr("value"));
+	console.log(typeof ioldValue);
 	$.ajax({
 		url : "surveyone1",
 		type : "POST",
@@ -104,10 +107,12 @@ $("input[name=myRadio1]").mouseup(function() {
 		},
 		success : function(data) {
 			var values = Object.values(data);
+			console.log(values);
 			if (data['onum'] == 3) {
 				console.log('3');
-				var everyold = eoldValue - 20;
-				$('#efile').attr("value",everyold);
+				var eold = eoldValue - 20;
+				console.log(eold);
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
 				console.log('2');
 				var eold = eoldValue - 10;
@@ -118,14 +123,16 @@ $("input[name=myRadio1]").mouseup(function() {
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
 				console.log('0');
-				var iveryold = ioldValue - 20;
-				$('#ifile').attr("value",iveryold);
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var eold = $('#efile').attr("value");
-			var iold = $('#ifile').attr("value");
+			var eold = Number($('#efile').attr("value"));
+			console.log(eold);
+			var iold = Number($('#ifile').attr("value"));
+			console.log(iold);
 			
 			if(data['qnum']==3) {
 				console.log('3');
@@ -155,67 +162,76 @@ $("input[name=myRadio1]").mouseup(function() {
 
 
 $("input[name=myRadio3]").mouseup(function() {
-	 oldnum3= $('input[name=myRadio3]:checked').val();
-	
+	 oldnum= $('input[name=myRadio3]:checked').val();
+	 
 }).change(function () {
-	var changenum3 = $('input[name=myRadio3]:checked').val();
-	var eoldValue3 = $('#efile').attr("value");
-	var ioldValue3 = $('#ifile').attr("value");
+	var changenum = $('input[name=myRadio3]:checked').val();
+	
+	var eoldValue = Number($('#efile').attr("value"));
+	
+	var ioldValue = Number($('#ifile').attr("value"));
+	
 	$.ajax({
 		url : "surveyone3",
 		type : "POST",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum3,		
-		 qnum : changenum3
+		 onum : oldnum,		
+		 qnum : changenum
 		},
-		success : function(data3) {
-			var values3 = Object.values(data3);
-			if (data3['onum3'] == 3) {
+		success : function(data) {
+			var values = Object.values(data);
+			console.log(values);
+			if (data['onum'] == 3) {
 				console.log('3');
-				var everyold3 = eoldValue3 - 20;
-				$('#efile').attr("value",everyold3);
-			} else if (data3['onum3'] == 2) {
+				var eold = eoldValue - 20;
+				$('#efile').attr("value",eold);
+			} else if (data['onum'] == 2) {
 				console.log('2');
-				var eold3 = eoldValue3 - 10;
-				$('#efile').attr("value",eold3);	
-			} else if (data3['onum3'] == 1) {
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+			} else if (data['onum'] == 1) {
 				console.log('1');
-				var iold3 = ioldValue3 - 10;
-				$('#ifile').attr("value",iold3);
-			} else if (data3['onum3'] == 0) {
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
+			} else if (data['onum'] == 0) {
 				console.log('0');
-				var iveryold3 = ioldValue3 - 20;
-				$('#ifile').attr("value",iveryold3);
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var eold3 = $('#efile').attr("value");
-			var iold3 = $('#ifile').attr("value");
+			var eold = Number($('#efile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
-			if(data3['qnum3']==3) {
+			
+			if(data['qnum']==3) {
 				console.log('3');
-				var number3 = eold3 + 20;
-				$('#efile').attr("value",number3);
-			} else if(data3['qnum3']==2) {
+				var number = eold + 20;
+				$('#efile').attr("value",number);
+				
+			} else if(data['qnum']==2) {
 				console.log('2');
-				var number3 = eold3 + 10;
-				$('#efile').attr("value",number3);
-			} else if(data3['qnum3']==1) {
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				
+			} else if(data['qnum']==1) {
 				console.log('1');
-				var number3 = iold3 + 10;
-				$('#ifile').attr("value",number3);
-			} else if(data3['qnum3']==0) {
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
+				
+			} else if(data['qnum']==0) {
 				console.log('0');
-				var number3 = iold3 + 20;
-				$('#ifile').attr("value",number3);
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
+				
 		} else {
 			console.log('-1');
 		}	
 		},
-		error: function(data3) {
+		error: function(data) {
 		alert('ajax 실패!');
 		}
 	});
