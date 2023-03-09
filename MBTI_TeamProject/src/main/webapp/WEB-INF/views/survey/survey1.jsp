@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
-<%@ page import="team.spring.springmbti.user.vo.Survey, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +13,12 @@ label {
     padding-right: 10px;
     font-size: 1rem;
 }
+
+#radio-previous1{
+opacity:0;} 
+
+#radio-previous3{
+opacity:0;}
 </style>
 </head>
 <body>
@@ -24,12 +29,12 @@ label {
    </div>
    <br>
    <div class="box1" id = "boxe" style="font-family:verdana; text-align: center">
-   <label for="file">E</label>
-   <progress id="file" max="100" value="80"></progress>
+   <label for="efile">E</label>
+   <progress id="efile" max="100" value="0"></progress>
 </div>
 	<div class="box2" id = "boxi" style="font-family:verdana; text-align: center">
-   <label for="file">I</label>
-   <progress id="file" max="100" value="80"></progress>
+   <label for="ifile">I</label>
+   <progress id="ifile" max="100" value="0"></progress>
 </div>
    <br>
 	<div class="box3" style="font-family:verdana; text-align: center">
@@ -38,6 +43,7 @@ label {
 	<input type="radio" name="myRadio1" value="1">아니다
 	<input type="radio" name="myRadio1" value="2">그렇다
 	<input type="radio" name="myRadio1" value="3">매우 그렇다
+	<input type="radio" id="radio-previous1" name="myRadio1" value="-1" checked="true"/>
 	</div>
 	<br>
 	<div class="box4" style="font-family:verdana; text-align: center">
@@ -54,6 +60,7 @@ label {
 	<input type="radio" name="myRadio3" value="1">아니다
 	<input type="radio" name="myRadio3" value="2">그렇다
 	<input type="radio" name="myRadio3" value="3">매우 그렇다
+	<input type="radio" id="radio-previous3" name="myRadio3" value="-1" checked="true"/>
 	</div>
 	<br>
 	<div class="box6" style="font-family:verdana; text-align: center">
@@ -79,200 +86,141 @@ label {
 	</div>	
 </body>
 <script>
-$("input[name='myRadio1']:radio").change(function () {
-	var changenum = this.value;
-	var very = 20;
-	var nvery = 10;
+$("input[name=myRadio1]").mouseup(function() {
+	 oldnum= $('input[name=myRadio1]:checked').val();
+	
+}).change(function () {
+	var changenum = $('input[name=myRadio1]:checked').val();
+	var eoldValue = $('#efile').attr("value");
+	var ioldValue = $('#ifile').attr("value");
 	$.ajax({
 		url : "surveyone1",
 		type : "POST",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 qnum : changenum,
-		 vnum : very,
-		 nvnum : nvery
+		 onum : oldnum,		
+		 qnum : changenum
 		},
 		success : function(data) {
 			var values = Object.values(data);
-			 
-			if(data['qnum']==1) {
+			if (data['onum'] == 3) {
+				console.log('3');
+				var everyold = eoldValue - 20;
+				$('#efile').attr("value",everyold);
+			} else if (data['onum'] == 2) {
+				console.log('2');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+			} else if (data['onum'] == 1) {
 				console.log('1');
-				$('#boxi *').remove();
-				var number = data['qnum'];
-				var numberi = String(number);
-				var ibar = '<label for="file">I</label><progress id="file" max="100" value="'+numbere+'"></progress>';
-				$('#boxi').append(ibar);
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
+			} else if (data['onum'] == 0) {
+				console.log('0');
+				var iveryold = ioldValue - 20;
+				$('#ifile').attr("value",iveryold);
+			} else {
+				console.log('-1');
+			}
+			
+			var eold = $('#efile').attr("value");
+			var iold = $('#ifile').attr("value");
+			
+			if(data['qnum']==3) {
+				console.log('3');
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
 				console.log('2');
-			} else if(data['qnum']==3) {
-				console.log('3');
-				$('#boxe *').remove();
-				var number = data['qnum'];
-				var numbere = String(number);
-				var ebar = '<label for="file">E</label><progress id="file" max="100" value="'+numbere+'"></progress>';
-				$('#boxe').append(ebar);
-			} else {
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+			} else if(data['qnum']==1) {
+				console.log('1');
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
+			} else if(data['qnum']==0) {
 				console.log('0');
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
+		} else {
+			console.log('-1');
 		}	
-			$.ajax({
-                async: true,
-                url: "https://dapi.kakao.com/v2/search/image",
-                type: 'GET',
-                headers: {
-                    Authorization: 'KakaoAK e54b078ee9b628c624b264f5de012d33'
-                },
-                data:{
-                    query : item.movieNm + ' 포스터'
-                },
-                success: function(data) {
-                    console.log('검색 성공!');
-                    let imgurl = data.documents[0].thumbnail_url;
-                    posterImg.attr('src', imgurl);
-                },
-                // 클로져
-                error: function() {
-                    alert('경고!!');
-                }
-            });
-		
 		},
 		error: function(data) {
 		alert('ajax 실패!');
 		}
-			
 	});
-	
 })
 
 
-
-function surveyone2() {
+$("input[name=myRadio3]").mouseup(function() {
+	 oldnum3= $('input[name=myRadio3]:checked').val();
+	
+}).change(function () {
+	var changenum3 = $('input[name=myRadio3]:checked').val();
+	var eoldValue3 = $('#efile').attr("value");
+	var ioldValue3 = $('#ifile').attr("value");
 	$.ajax({
-		url : "likeajax",
+		url : "surveyone3",
 		type : "POST",
 		async : "false",
 		dataType : "json",
-		data : { myid: $("#myid").val(),
-				 otherid: $("#otherid").val(),
-				 bnum: $("#boardnum").val(),
-				 likenum: $("#likenum").val()
-				},
-		success : function(data) {
-			
-			var values = Object.values(data);
-			let liketr = $("<tr></tr>");
-			
-			if(data['ajaxresult'] == 7){
-			console.log('좋아요 성공하셨습니다!');
-			$('#likecount').text(data['likeresult']);
-			} else if(data['ajaxresult'] == 4) {
-				alert('당신이 작성한 글입니다!');
-			} else {
-				alert('이미 좋아요를 하셨습니다!');
-			}
+		data : { 
+		 onum : oldnum3,		
+		 qnum : changenum3
 		},
-		error: function(data) {
-			alert('ajax 실패!');
-		}
+		success : function(data3) {
+			var values3 = Object.values(data3);
+			if (data3['onum3'] == 3) {
+				console.log('3');
+				var everyold3 = eoldValue3 - 20;
+				$('#efile').attr("value",everyold3);
+			} else if (data3['onum3'] == 2) {
+				console.log('2');
+				var eold3 = eoldValue3 - 10;
+				$('#efile').attr("value",eold3);	
+			} else if (data3['onum3'] == 1) {
+				console.log('1');
+				var iold3 = ioldValue3 - 10;
+				$('#ifile').attr("value",iold3);
+			} else if (data3['onum3'] == 0) {
+				console.log('0');
+				var iveryold3 = ioldValue3 - 20;
+				$('#ifile').attr("value",iveryold3);
+			} else {
+				console.log('-1');
+			}
 			
+			var eold3 = $('#efile').attr("value");
+			var iold3 = $('#ifile').attr("value");
+			
+			if(data3['qnum3']==3) {
+				console.log('3');
+				var number3 = eold3 + 20;
+				$('#efile').attr("value",number3);
+			} else if(data3['qnum3']==2) {
+				console.log('2');
+				var number3 = eold3 + 10;
+				$('#efile').attr("value",number3);
+			} else if(data3['qnum3']==1) {
+				console.log('1');
+				var number3 = iold3 + 10;
+				$('#ifile').attr("value",number3);
+			} else if(data3['qnum3']==0) {
+				console.log('0');
+				var number3 = iold3 + 20;
+				$('#ifile').attr("value",number3);
+		} else {
+			console.log('-1');
+		}	
+		},
+		error: function(data3) {
+		alert('ajax 실패!');
+		}
 	});
-}
+})
 
-function surveyone3() {
-	$.ajax({
-		url : "likeajax",
-		type : "POST",
-		async : "false",
-		dataType : "json",
-		data : { myid: $("#myid").val(),
-				 otherid: $("#otherid").val(),
-				 bnum: $("#boardnum").val(),
-				 likenum: $("#likenum").val()
-				},
-		success : function(data) {
-			
-			var values = Object.values(data);
-			let liketr = $("<tr></tr>");
-			
-			if(data['ajaxresult'] == 7){
-			console.log('좋아요 성공하셨습니다!');
-			$('#likecount').text(data['likeresult']);
-			} else if(data['ajaxresult'] == 4) {
-				alert('당신이 작성한 글입니다!');
-			} else {
-				alert('이미 좋아요를 하셨습니다!');
-			}
-		},
-		error: function(data) {
-			alert('ajax 실패!');
-		}
-			
-	});
-}
 
-function surveyone4() {
-	$.ajax({
-		url : "likeajax",
-		type : "POST",
-		async : "false",
-		dataType : "json",
-		data : { myid: $("#myid").val(),
-				 otherid: $("#otherid").val(),
-				 bnum: $("#boardnum").val(),
-				 likenum: $("#likenum").val()
-				},
-		success : function(data) {
-			
-			var values = Object.values(data);
-			let liketr = $("<tr></tr>");
-			
-			if(data['ajaxresult'] == 7){
-			console.log('좋아요 성공하셨습니다!');
-			$('#likecount').text(data['likeresult']);
-			} else if(data['ajaxresult'] == 4) {
-				alert('당신이 작성한 글입니다!');
-			} else {
-				alert('이미 좋아요를 하셨습니다!');
-			}
-		},
-		error: function(data) {
-			alert('ajax 실패!');
-		}
-			
-	});
-}
-
-function surveyone5() {
-	$.ajax({
-		url : "likeajax",
-		type : "POST",
-		async : "false",
-		dataType : "json",
-		data : { myid: $("#myid").val(),
-				 otherid: $("#otherid").val(),
-				 bnum: $("#boardnum").val(),
-				 likenum: $("#likenum").val()
-				},
-		success : function(data) {
-			
-			var values = Object.values(data);
-			let liketr = $("<tr></tr>");
-			
-			if(data['ajaxresult'] == 7){
-			console.log('좋아요 성공하셨습니다!');
-			$('#likecount').text(data['likeresult']);
-			} else if(data['ajaxresult'] == 4) {
-				alert('당신이 작성한 글입니다!');
-			} else {
-				alert('이미 좋아요를 하셨습니다!');
-			}
-		},
-		error: function(data) {
-			alert('ajax 실패!');
-		}
-			
-	});
-}
 </script>
 </html>
