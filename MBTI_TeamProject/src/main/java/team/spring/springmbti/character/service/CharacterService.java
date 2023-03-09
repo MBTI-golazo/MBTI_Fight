@@ -17,6 +17,7 @@ public class CharacterService {
 	Logger log = LogManager.getLogger("case3");
 	
 	public int createCharacter(CharacterInfo character) {
+		
 		int count = dao.insertCharacter(character);
 		if(count==1) {
 			log.debug("캐릭터 등록 성공");
@@ -24,6 +25,13 @@ public class CharacterService {
 			log.debug("캐릭터 등록 실패");
 		}
 		return count;
+	}
+
+	public CharacterInfo getCharacter(int userCharacterNum) {
+		
+		CharacterInfo character = dao.getCharacter(userCharacterNum);
+		
+		return character;
 	}
 
 

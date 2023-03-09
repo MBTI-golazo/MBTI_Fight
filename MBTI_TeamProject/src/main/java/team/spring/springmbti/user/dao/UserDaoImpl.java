@@ -32,13 +32,26 @@ public class UserDaoImpl implements UserDao {
 		int count = session.insert("myUser.insertUser", user);
 		
 		if(count==1) {
-//			session.commit();
 			log.debug("유저 등록 커밋 성공");
 		}else {
 			log.debug("유저 등록 실패, 롤백");
 		}
-//		session.close();
 		return count;
+	}
+
+	@Override
+	public int getUserNum(String userEmail) {
+		
+		int userNum = session.selectOne("myUser.getUserNum", userEmail);
+		return userNum;
+	}
+
+	@Override
+	public int getUserCharacterNum(int userNum) {
+		
+		log.debug(userNum);
+		int userCharacterNum = session.selectOne("myUser.getUserCharacter", userNum);
+		return userCharacterNum;
 	}
 
 	
