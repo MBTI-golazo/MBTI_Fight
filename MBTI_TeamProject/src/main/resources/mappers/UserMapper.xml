@@ -13,6 +13,14 @@
    <insert id="insertUser" parameterType="User">
       INSERT INTO users(userEmail,userName,userProfile) VALUES(#{userEmail},#{userName},#{userProfile})
    </insert>
+   
+   <select id="getUserNum" parameterType="String" resultType="Integer">
+      select userNum from users where userEmail=#{userEmail}
+   </select>
+   
+   <select id="getUserCharacter" parameterType="Integer" resultType="Integer">
+      select userCharacter from users where userNum=#{userNum}
+   </select>
 
    <!-- resultMap의 일반적인 사용법  property에 vo의 field명, column에 db의 column명이 다를 때 사용한다. 둘을 맞춰주는 역할-->
    <!-- <resultMap id="result"

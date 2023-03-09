@@ -7,5 +7,9 @@ public interface UserDao {
 	User emailCheck(String userEmail);
 
 	int insertUser(User user);
+
+	int getUserNum(String string);
+
+	int getUserCharacterNum(int userNum);
 	
 }

@@ -12,9 +12,15 @@
     <title>Title</title>
     
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-
 <script src="../js/mypage.js"></script>
+<!-- <script>
+	function popuptest(){
+	    var url = "http://localhost:8080/springmbti/resources/searchBattleUser";
+	    var name = "popup test";
+	    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    window.open(url, name, option);
+	}
+</script> -->
 
 </head>
 <body>
@@ -43,10 +49,13 @@
 	<form action="/springmbti/character" method="post">
 		<input type="submit" value="캐릭터생성(임시)">
 	</form>
+	<form action="/springmbti/myPage" method="get">
+		<input type="submit" value="마이페이지">
+	</form>
 	<!-- 모달넣어야 하고  -->
 	
     <button>설문조사</button>
-    <button>대결하기</button>
+    <a href="/springmbti/searchBattleUser"><button>대결하기</button></a>
     <br><br>
     <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
     
