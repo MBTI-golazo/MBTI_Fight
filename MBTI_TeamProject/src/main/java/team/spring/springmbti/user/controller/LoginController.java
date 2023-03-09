@@ -66,6 +66,7 @@ public class LoginController {
         }else {
         	log.debug("이미 생성된 아이디가 존재합니다.");
         }
+        model.addAttribute("user", user);
         
         return "myPage";
     }

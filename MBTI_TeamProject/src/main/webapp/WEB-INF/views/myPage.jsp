@@ -40,6 +40,9 @@
       
    </c:choose>
    
+	<form action="/springmbti/character" method="post">
+		<input type="submit" value="캐릭터생성(임시)">
+	</form>
 	<!-- 모달넣어야 하고  -->
 	
     <button>설문조사</button>
