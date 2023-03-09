@@ -1,0 +1,5 @@
+# no .properties
+*.properties
+
+# MANIFEST.MF
+MANIFEST.MF

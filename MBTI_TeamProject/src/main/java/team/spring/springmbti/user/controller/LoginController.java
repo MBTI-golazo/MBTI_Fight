@@ -58,30 +58,15 @@ public class LoginController {
         }else {
         	log.debug("이미 생성된 아이디가 존재합니다.");
         }
+        model.addAttribute("user", user);
         
-        return "testPage";
+        return "myPage";
     }
 	 
-//	@RequestMapping(value = "/home", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
-//		boolean canUse=false;
-//		
-//		canUse = joinservice.idCheck("test123");
-//		
-//		if(canUse) {
-//			log.debug("사용 가능");
-//		}
-//		
-//		return "home";
-//	}
+	@GetMapping("test")
+	public String myTest() {
+		
+		return "resultPage";
+	}
 	
 }
