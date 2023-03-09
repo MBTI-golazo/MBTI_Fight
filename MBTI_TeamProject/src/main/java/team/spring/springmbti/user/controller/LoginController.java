@@ -48,6 +48,11 @@ public class LoginController {
         log.debug("###nickname#### : " + userInfo.get("nickname"));
         log.debug("###profile_image#### : " + userInfo.get("profile_image"));
         
+        if(userInfo.get("email")==null)
+        {
+        	return "redirect:/resources//main.htm"; 
+        }
+        
         String userName = (String) userInfo.get("nickname");
         String userEmail = (String) userInfo.get("email");
         String userProfile = (String) userInfo.get("profile_image");
