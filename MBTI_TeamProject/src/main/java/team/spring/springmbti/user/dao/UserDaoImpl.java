@@ -32,12 +32,12 @@ public class UserDaoImpl implements UserDao {
 		int count = session.insert("myUser.insertUser", user);
 		
 		if(count==1) {
-			session.commit();
+//			session.commit();
 			log.debug("유저 등록 커밋 성공");
 		}else {
 			log.debug("유저 등록 실패, 롤백");
 		}
-		session.close();
+//		session.close();
 		return count;
 	}
 

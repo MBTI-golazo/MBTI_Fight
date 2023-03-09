@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 public class MBTIResult {
 	private String MBTI;
 	private String MBTICharacter;
-	private String MBTIComments;
+	private String MBTIComment1;
+	private String MBTIComment2;
+	private String MBTIImgurl;
 }
