@@ -7,46 +7,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="stylesheet" href="resources/css/resultpage.css">
-    <script>
-	    function popuptest(){
-	    	
-	    	alert("test")
-	        var url = "http://localhost:8080/springmbti/popuptest.jsp";
-	        var name = "popup test";
-	        var option = "width = 500, height = 500, top = 100, left = 200, location = no"
-	        window.open(url, name, option);
-	    }
-    </script>
     <style>
-ul {
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-/* button.share_btn {
-	background-color: grey;
-	width: 200px;
-	height: 30px;
-}
-
-button.battle_btn {
-	background-color: skyblue;
-	width: 200px;
-	height: 30px;
-}
-
-button.myPage_btn {
-	background-color: lightgrey;
-	width: 200px;
-	height: 30px;
-	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px
-		rgba(0, 0, 0, 0.06);
-	cursor: pointer;
-	transition: 0.5s;
-} */
-</style>
+	ul {
+		display: table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	</style>
 </head>
 <body>
     <div align="center"><h3>당신의 MBTI는...</h3></div>
@@ -69,10 +38,51 @@ button.myPage_btn {
     	</ul>
     </div>
     <div class="btn_div">
-    	<button class="share_btn">공유하기</button><br>
-    	<button class="battle_btn" onclick="popuptest()">대전하기</button><br>
-    	<button class="myPage_btn">마이페이지</button>
+    	<button class="share_btn" onClick="sendLinkDefault()">공유하기</button><br>
+    	<button class="battle_btn">대전하기</button><br>
+    	<button class="myPage_btn" onClick="location.href='/springmbti/test1'">마이페이지</button>
     </div>
-    
 </body>
+<script type="text/javascript">
+	function sendLinkCustom(){
+		Kakao.init("14ff9a0b93923e6ee771ed79828eb683");
+		Kakao.Link.sendCustom({
+			templateId:90915
+		});
+	}
+	try {
+		  function sendLinkDefault() {
+		    Kakao.init("14ff9a0b93923e6ee771ed79828eb683")
+		    Kakao.Link.sendDefault({
+		      objectType: "feed",
+		      content: {
+		        title: "MBTI결과공유",
+		        description: "친구의 MBTI결과를 확인해보세요",
+		        imageUrl:
+		          "https://i.imgur.com/gz3FELd.jpg",
+		        link: {
+		          mobileWebUrl: "http://123.142.252.26:12345/springmbti/test",
+		          webUrl: "http://123.142.252.26:12345/springmbti/test",
+		        },
+		      },
+		      itemContent:{
+		    	profileText:"${ myUser.userName }",
+		    	profileImageUrl:"${ myUser.userProfile }"
+		      },
+		      buttons: [
+		        {
+		          title: "확인하러 가기",
+		          link: {
+		            mobileWebUrl: "http://123.142.252.26:12345/springmbti/test",
+		            webUrl: "http://123.142.252.26:12345/springmbti/test",
+		          },
+		        }
+		      ],
+		    })
+		  }
+		; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+		catch(e) { 
+			window.kakaoDemoException && window.kakaoDemoException(e) 
+		}
+</script>
 </html>

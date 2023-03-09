@@ -47,5 +47,8 @@
 	
     <button>설문조사</button>
     <button>대결하기</button>
+    <br><br>
+    <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
+    
 </body>
 </html>
