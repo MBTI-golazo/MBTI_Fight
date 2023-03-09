@@ -132,7 +132,7 @@ $("input[name='myRadio1']:radio").change(function () {
                 },
                 // 클로져
                 error: function() {
-                    alert('경고');
+                    alert('경고!!');
                 }
             });
 		
