@@ -31,7 +31,12 @@
          value="classpath:mybatis-config.xml" />
       <property name="mapperLocations">
          <list>
+
+            
+            <value>classpath:mappers/SurveyMapper.xml</value>
+
             <value>classpath:mappers/UserMapper.xml</value>
+
          </list>
       </property>
    </bean>

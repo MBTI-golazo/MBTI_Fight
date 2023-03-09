@@ -1,3 +1,4 @@
+
 package team.spring.springmbti.user.vo;
 
 import lombok.AllArgsConstructor;
@@ -26,3 +27,4 @@ public class User {
 	private int userJ;
 	private int userItem;
 }
+
