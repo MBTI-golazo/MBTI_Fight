@@ -1,5 +1,7 @@
 package team.spring.springmbti.battle.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,23 @@ public class BattleController {
 		User defenceUser = new User();
 		defenceUser.setUserName("방어자");
 		String result = service.battle(challengeCharacter, defenceCharacter, challengeUser, defenceUser);
+		return null;
+	}
+	
+	@GetMapping(value = "searchBattleUser")
+	public String searchBattleUser(HttpSession session) {
+		
+		User user = (User)session.getAttribute("myUser");
+		// 내캐릭터 받아오기
+		log.debug(user);
+		return "searchBattleUser";
+	}
+	
+	@GetMapping(value = "prepareBattle")
+	public String prepareBattle(Model model) {
+		User user = (User)model.getAttribute("myUser");
+		log.debug(user);
+		log.debug(user.getUserName() + "대결준비");
 		return null;
 	}
 }
