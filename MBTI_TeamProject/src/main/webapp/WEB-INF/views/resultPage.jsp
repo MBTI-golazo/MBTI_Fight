@@ -61,8 +61,8 @@
 		        imageUrl:
 		          "https://i.imgur.com/gz3FELd.jpg",
 		        link: {
-		          mobileWebUrl: "http://123.142.252.26:12345/springmbti/test",
-		          webUrl: "http://123.142.252.26:12345/springmbti/test",
+		          mobileWebUrl: "http://123.142.252.26:23232/springmbti/test",
+		          webUrl: "http://123.142.252.26:23232/springmbti/test",
 		        },
 		      },
 		      itemContent:{
@@ -73,8 +73,8 @@
 		        {
 		          title: "확인하러 가기",
 		          link: {
-		            mobileWebUrl: "http://123.142.252.26:12345/springmbti/test",
-		            webUrl: "http://123.142.252.26:12345/springmbti/test",
+		            mobileWebUrl: "http://123.142.252.26:23232/springmbti/test",
+		            webUrl: "http://123.142.252.26:23232/springmbti/test",
 		          },
 		        }
 		      ],
