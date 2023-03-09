@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import team.spring.springmbti.user.service.SurveyService;
-import team.spring.springmbti.user.vo.Survey;
 
 /**
  * Handles requests for the application home page.
@@ -40,15 +42,17 @@ public class SurveyController1 {
 	
 	
 	@PostMapping("surveyone1")
-	public String handler1(Model model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler1(Model model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
-		int num = Integer.parseInt(request.getParameter("num"));
+		//int num = Integer.parseInt(request.getParameter("num"));
 		int countnum = 20;
-		
-		Survey survey1 = new Survey(num,countnum);
-		model.addAttribute("surveys",survey1);
+		//log.debug(num);
+		log.debug(qnum);
+		//Survey survey1 = new Survey(num,countnum);
+		//log.debug(survey1);
+		//model.addAttribute("surveys",survey1);
 		
 //		if (num == countnum) {
 //			
@@ -56,14 +60,14 @@ public class SurveyController1 {
 //			
 //		}
 		
-//		Gson gson = new Gson();
-//		JsonObject jsonObject = new JsonObject();
-//		jsonObject.addProperty("qnum", qnum);
-//		jsonObject.addProperty("num", num);
-//		
-//		String find = gson.toJson(jsonObject);
-//		response.getWriter().write(find);
-		return "survey/survey1";
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("qnum", qnum);
+		//jsonObject.addProperty("num", num);
+		
+		String find = gson.toJson(jsonObject);
+		response.getWriter().write(find);
+		//return "survey/survey1";
 	}
 	
 	
