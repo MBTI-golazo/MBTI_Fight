@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import team.spring.springmbti.survey.service.SurveyService;
+import team.spring.springmbti.user.vo.User;
 
 /**
  * Handles requests for the application home page.
@@ -33,7 +34,7 @@ public class SurveyController {
 	
 	@PostMapping("surveyone")
 	public String handler(Model model) {
-		log.debug("handler1() 호출 - 일단연습");
+		log.debug("handler1() s호출 - 일단연습");
 		
 		
 		return "survey/survey1";
@@ -97,13 +98,26 @@ public class SurveyController {
 	public void handler001(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
-		int qnum = Integer.parseInt(request.getParameter("qnum"));
-		int onum = Integer.parseInt(request.getParameter("onum"));
-
+		int qone = Integer.parseInt(request.getParameter("qone"));
+		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
+		int qthree = Integer.parseInt(request.getParameter("qthree"));
+		int qfour = Integer.parseInt(request.getParameter("qfour"));
+		int qfive = Integer.parseInt(request.getParameter("qfive"));
+		int qtotal = qone + qtwo + qthree + qfour + qfive;
+		int total = qtotal - 15;
+		int nqtotal = total*-1;
+		String email = new String("okay@naver.com");
+		User user = new User();
+		user.setUserEmail(email);
+		user.setUserI(nqtotal);
+		user.setUserE(qtotal);
+		
+		
+		surveyservice.updateScore(user);
+		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("qnum", qnum);
-		jsonObject.addProperty("onum", onum);
+		jsonObject.addProperty("qone", qone);
 		String find = gson.toJson(jsonObject);
 		response.getWriter().write(find);
 	}

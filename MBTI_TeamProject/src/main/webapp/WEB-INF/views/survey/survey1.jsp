@@ -664,23 +664,23 @@ function sbutton1() {
 		type : "POST",
 		async : "false",
 		dataType : "json",
-		data : { qone: $("#myid").val(),
-				 qtwo: $("#otherid").val(),
-				 qthree: $("#boardnum").val(),
-				 qfour: $("#likenum").val(),
-				 qfive: $("#likenum").val(),
+		data : { qone: $('input[name=myRadio1]:checked').val(),
+				 qtwo: $('input[name=myRadio2]:checked').val(),
+				 qthree: $('input[name=myRadio3]:checked').val(),
+				 qfour: $('input[name=myRadio4]:checked').val(),
+				 qfive: $('input[name=myRadio5]:checked').val()
 				},
 		success : function(data) {
 			
-			var values = Object.values(data);
+			//var values = Object.values(data);
 			
 			
-			if(data['ajaxresult'] == 7){
-			alert('성공하셨습니다!');
-			$('#likecount').text(data['likeresult']);
-			} else {
-				alert('성공!');
-			}
+			//if(data['ajaxresult'] == 7){
+			
+			console.log('성공!!');
+			//} else {
+				
+			//}
 		},
 		error: function(data) {
 			alert('ajax 실패!');
