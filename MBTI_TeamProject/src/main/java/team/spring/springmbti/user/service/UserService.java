@@ -29,5 +29,12 @@ public class UserService {
 		
 		return userCharacterNum;
 	}
+	
+	public int deleteUser(String userEmail) {
+		
+		int count = dao.deleteUser(userEmail);
+		
+		return count;
+	}
 
 }

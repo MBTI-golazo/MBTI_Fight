@@ -9,7 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
@@ -48,5 +52,20 @@ public class MyPageController {
 		
 		return "userMyPage";
 	}
-
+	
+	 
+		@RequestMapping(value="myPageDeleteUser", method = RequestMethod.POST)
+		public String deleteUser(HttpSession session) {
+			
+			User user = (User)session.getAttribute("myUser");
+//			log.debug(user);
+			String userEmail = user.getUserEmail();
+//			log.debug(userEmail);
+//			log.debug("회원정보 읽기 성공");
+			int count = service.deleteUser(userEmail);
+			
+			
+			return "redirect:/resources/main.html";
+		}
+	
 }

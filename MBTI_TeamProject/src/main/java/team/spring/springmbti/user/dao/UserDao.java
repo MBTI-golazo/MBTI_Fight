@@ -11,5 +11,7 @@ public interface UserDao {
 	int getUserNum(String string);
 
 	int getUserCharacterNum(int userNum);
+
+	int deleteUser(String userEmail);
 	
 }

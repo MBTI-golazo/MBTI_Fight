@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import team.spring.springmbti.user.service.LoginService;
 import team.spring.springmbti.user.service.OAuthService;
@@ -75,14 +77,6 @@ public class LoginController {
         
         return "myPage";
     }
-	 
-	@GetMapping("test")
-	public String myTest() {
-		
-		
-		
-		return "resultPage";
-	}
 	
 	
 }

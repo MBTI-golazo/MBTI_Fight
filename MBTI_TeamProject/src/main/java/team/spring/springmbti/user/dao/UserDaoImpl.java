@@ -1,5 +1,8 @@
 package team.spring.springmbti.user.dao;
 
+import java.sql.Date;
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,5 +57,17 @@ public class UserDaoImpl implements UserDao {
 		return userCharacterNum;
 	}
 
+	@Override
+	public int deleteUser(String userEmail) {
+		Date outDate=java.sql.Date.valueOf(java.time.LocalDate.now());
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("userEmail",userEmail);
+		map.put("outDate",outDate); // 현재 탈퇴 시간을 받아 옴
+		int count = session.update("myUser.deleteUser", map);
+		
+		return count;
+	}
+	
+	
 	
 }
