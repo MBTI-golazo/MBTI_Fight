@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -20,6 +18,7 @@ import team.spring.springmbti.user.vo.User;
 
 
 @Controller
+@SessionAttributes(value= {"myUser"})
 public class LoginController {
 	
 	@Autowired
@@ -33,22 +32,32 @@ public class LoginController {
 	Logger log = LogManager.getLogger("case3");
 	
 	
+	@ModelAttribute("myUser")
+	public User createUser() {
+		User user = new User();
+		return user;
+	}
 	
 	@GetMapping("login")
-    public String home(@RequestParam(value = "code", required = false) String code,Model model) throws Exception{
+    public String home(@RequestParam(value = "code", required = false) String code,Model model,@ModelAttribute("myUser") User user) throws Exception{
         log.debug("#########" + code);
         String access_Token = kakaoservice.getKakaoAccessToken(code);
         HashMap<String, Object> userInfo = kakaoservice.getUserInfo(access_Token);
         log.debug("###access_Token#### : " + access_Token);
-        log.debug("###userInfo#### : " + userInfo.get("email"));
+        log.debug("###useremail#### : " + userInfo.get("email"));
         log.debug("###nickname#### : " + userInfo.get("nickname"));
         log.debug("###profile_image#### : " + userInfo.get("profile_image"));
+        
+        if(userInfo.get("email")==null)
+        {
+        	return "redirect:/resources//main.htm"; 
+        }
         
         String userName = (String) userInfo.get("nickname");
         String userEmail = (String) userInfo.get("email");
         String userProfile = (String) userInfo.get("profile_image");
         
-        User user = new User();
+//      User user = new User();
         user.setUserName(userName);
         user.setUserEmail(userEmail);
         user.setUserProfile(userProfile);
@@ -62,38 +71,18 @@ public class LoginController {
         }else {
         	log.debug("이미 생성된 아이디가 존재합니다.");
         }
+        model.addAttribute("user", user);
         
         return "myPage";
     }
-	
-	// 설문조사 이동
-	@PostMapping("survey1")
-	public String mypage1() {
-		log.debug("mypage에서 survey1으로 호출!");
+	 
+	@GetMapping("test")
+	public String myTest() {
 		
-		return "survey/survey1";
+		
+		
+		return "resultPage";
 	}
 	
-//	@RequestMapping(value = "/home", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
-//		boolean canUse=false;
-//		
-//		canUse = joinservice.idCheck("test123");
-//		
-//		if(canUse) {
-//			log.debug("사용 가능");
-//		}
-//		
-//		return "home";
-//	}
 	
 }

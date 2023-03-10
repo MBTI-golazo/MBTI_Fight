@@ -11,12 +11,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" 
-integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
-rossorigin="anonymous"></script>
-
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="../js/mypage.js"></script>
+<!-- <script>
+	function popuptest(){
+	    var url = "http://localhost:8080/springmbti/resources/searchBattleUser";
+	    var name = "popup test";
+	    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+	    window.open(url, name, option);
+	}
+</script> -->
 
 </head>
 <body>
@@ -30,28 +34,30 @@ rossorigin="anonymous"></script>
     <br><br>
     <!-- user email이 primary로 DB에 저장되어 있으면  토큰, 이메일, 닉네임, 프로필 이미지 가져오는데 
     	db에 없으면 저장이 되는데 , 여기서 확인을 하고  -->
-
-	
     
-    <!-- canregister는 신규 가입이고 -->
-	 <c:choose>
-		<c:when test="${ canRegister }">
-			<form action="/springmbti/survey1" method="post">
-				<input type="submit" value="설문조사">
-			</form>
-			<button id="deleteBtn" disabled="disabled">삭제하기</button>
-			<button id="fightStartBtn" disabled="disabled">대결하기</button>
-		</c:when>
-
-	      <c:otherwise>
-	      	 <form action="/springmbti/survey1" method="post">
-				<input type="submit" value="설문조사" disabled="disabled">
-			 </form>
-	         <button id="deleteBtn">삭제하기</button>
-	         <button id="fightStartBtn">대결하기</button>
-	      </c:otherwise>
-	 </c:choose>
-	<!-- 삭제 하시겠습니까? 모달넣어야 하고  --><!-- 대결하기는 step2에서 연결하기 -->
-
+    <c:choose>
+      <c:when test="${ !canRegister }">
+         <button id="deleteBtn" disabled="disabled">삭제하기</button>
+      </c:when>
+      
+      <c:otherwise>
+         <button id="deleteBtn">삭제하기</button>
+      </c:otherwise>
+      
+   </c:choose>
+   
+	<form action="/springmbti/character" method="post">
+		<input type="submit" value="캐릭터생성(임시)">
+	</form>
+	<form action="/springmbti/myPage" method="get">
+		<input type="submit" value="마이페이지">
+	</form>
+	<!-- 모달넣어야 하고  -->
+	
+    <button>설문조사</button>
+    <a href="/springmbti/searchBattleUser"><button>대결하기</button></a>
+    <br><br>
+    <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
+    
 </body>
 </html>
