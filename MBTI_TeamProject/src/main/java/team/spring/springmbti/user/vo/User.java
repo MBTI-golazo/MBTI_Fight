@@ -1,6 +1,8 @@
 
 package team.spring.springmbti.user.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+	private String userNum;
 	private String userEmail;
 	private String userName;
 	private String userProfile;
@@ -26,5 +29,9 @@ public class User {
 	private int userP;
 	private int userJ;
 	private int userItem;
+	private boolean userAcceptance;
+	private Date initDate;
+	private String isout;
+	private Date outDate;
 }
 

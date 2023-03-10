@@ -32,4 +32,12 @@ public class CharacterDaoImpl implements CharacterDao{
 		return count;
 	}
 
+	@Override
+	public CharacterInfo getCharacter(int userCharacterNum) {
+		
+		CharacterInfo character = session.selectOne("myCharacter.getCharacterByCharacterNum", userCharacterNum);
+		
+		return character;
+	}
+
 }

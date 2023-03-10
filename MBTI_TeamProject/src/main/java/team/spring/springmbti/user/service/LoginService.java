@@ -38,6 +38,19 @@ public class LoginService {
 		
 		return canRegister;
 	}
+
+	public boolean checkCharacter(String userEmail) {
+		
+		boolean isExist = false;
+		
+		int characterNum = dao.characterCheck(userEmail);
+		
+		if(characterNum>1) {
+			isExist=true;
+		}
+		
+		return isExist;
+	}
 	
 	
 	

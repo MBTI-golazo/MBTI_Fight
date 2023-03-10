@@ -33,7 +33,7 @@
          <list>
 
             
-            <value>classpath:mappers/SurveyMapper.xml</value>
+            <!-- <value>classpath:mappers/SurveyMapper.xml</value> -->
 
             <value>classpath:mappers/UserMapper.xml</value>
             <value>classpath:mappers/CharacterMapper.xml</value>
