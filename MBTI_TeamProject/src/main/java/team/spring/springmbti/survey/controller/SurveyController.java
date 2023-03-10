@@ -1,4 +1,4 @@
-package team.spring.springmbti.user.controller;
+package team.spring.springmbti.survey.controller;
 
 import java.io.IOException;
 
@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import team.spring.springmbti.user.service.SurveyService;
+import team.spring.springmbti.survey.service.SurveyService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 @RequestMapping(value = "survey")
-public class SurveyController1 {
+public class SurveyController {
 	
 	@Autowired
 	private SurveyService surveyservice;

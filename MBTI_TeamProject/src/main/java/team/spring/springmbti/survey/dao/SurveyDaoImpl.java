@@ -1,4 +1,4 @@
-package team.spring.springmbti.user.dao;
+package team.spring.springmbti.survey.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package team.spring.springmbti.user.service;
+package team.spring.springmbti.survey.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
