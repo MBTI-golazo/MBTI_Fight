@@ -50,7 +50,7 @@ public class LoginController {
         
         if(userInfo.get("email")==null)
         {
-        	return "redirect:/resources//main.htm"; 
+        	return "redirect:/resources/main.html"; 
         }
         
         String userName = (String) userInfo.get("nickname");

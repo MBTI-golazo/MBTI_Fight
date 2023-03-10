@@ -31,5 +31,7 @@ public class User {
 	private int userItem;
 	private boolean userAcceptance;
 	private Date initDate;
+	private String isout;
+	private Date outDate;
 }
 

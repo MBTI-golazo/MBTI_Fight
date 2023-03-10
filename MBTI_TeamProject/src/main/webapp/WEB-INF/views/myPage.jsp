@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    
+    <div><img src="${ myUser.userProfile }" width="50" height="50">${ myUser.userName }접속중</div>
     <div class="box1" style="font-family:verdana; text-align: left"> 
 		<h2>나만의  MBTI 캐릭터 만들기</h2> <h3 style="font-family:courier">모두 덤벼라!</h3>
 		<h1>MBTI 미니 대전</h1>
