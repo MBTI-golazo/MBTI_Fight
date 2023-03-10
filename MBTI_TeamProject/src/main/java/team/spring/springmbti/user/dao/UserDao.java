@@ -17,5 +17,7 @@ public interface UserDao {
 	int characterCheck(String userEmail);
 
 	int deleteCharacter(int userCharacterNum);
+
+	User getUserInfo(String battleUserNum);
 	
 }

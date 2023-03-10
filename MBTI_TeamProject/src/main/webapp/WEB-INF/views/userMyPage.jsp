@@ -23,7 +23,11 @@
 	크리티컬 확률 - ${ sessionScope.myCharacter.characterCritical } <br>
 	기본추가공격력 - ${ sessionScope.myCharacter.characterHP } <br>
 	
-	
+	<h3>대결 하기</h3>
+	<form action="/springmbti/mypage/battleuser">
+		대결상대 유저번호 : <input type="text" name="battleUserNum">
+		<input type="submit" value="대결신청">
+	</form>
 	
 	test
 </body>

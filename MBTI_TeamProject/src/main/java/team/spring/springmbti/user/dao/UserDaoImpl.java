@@ -80,6 +80,12 @@ public class UserDaoImpl implements UserDao {
 		int count = session.update("myUser.deleteCharacter",userCharacterNum);
 		return count;
 	}
+
+	@Override
+	public User getUserInfo(String battleUserNum) {
+		User user = session.selectOne("myUser.getUserInfoByUserNum", battleUserNum);
+		return user;
+	}
 	
 	
 	
