@@ -39,7 +39,7 @@
     
     <c:choose>
       <c:when test="${ isExist }">
-      	 <button onClick="location.href='/springmbti/deleteCharacter'">삭제하기</button>
+      	 <button onClick="location.href='/springmbti/mypage/deleteCharacter'">삭제하기</button>
       </c:when>
       
       <c:otherwise>
@@ -51,17 +51,17 @@
 	<form action="/springmbti/character" method="post">
 		<input type="submit" value="캐릭터생성(임시)">
 	</form>
-	<form action="/springmbti/myPage" method="get">
+	<form action="/springmbti/mypage" method="get">
 		<input type="submit" value="마이페이지">
 	</form>
 	<!-- 모달넣어야 하고  -->
 	
     <button>설문조사</button>
-    <a href="/springmbti/searchBattleUser"><button>대결하기</button></a>
+    <a href="/springmbti/mypage/searchBattleUser"><button>대결하기</button></a>
     <br><br>
     <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
     <br><br>
-	<form action="/springmbti/myPageDeleteUser" method="post">  
+	<form action="/springmbti/mypage/myPageDeleteUser" method="post">  
     <button>회원탈퇴 (test)</button></form> 
     <!-- 탈퇴 모달 넣기 -->
     
