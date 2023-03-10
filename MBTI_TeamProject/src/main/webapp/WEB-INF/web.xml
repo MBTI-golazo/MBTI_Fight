@@ -8,6 +8,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/*-context.xml</param-value>
 	</context-param>
+	<!-- 시작화면을 main.html로 하기 위한 설정  -->
+   <welcome-file-list>
+        <welcome-file>/resources/main.html</welcome-file>
+    </welcome-file-list>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
