@@ -22,9 +22,11 @@
 	}
 </script> -->
 
+
+
 </head>
 <body>
-    
+    <div><img src="${ myUser.userProfile }" width="50" height="50">${ myUser.userName }접속중</div>
     <div class="box1" style="font-family:verdana; text-align: left"> 
 		<h2>나만의  MBTI 캐릭터 만들기</h2> <h3 style="font-family:courier">모두 덤벼라!</h3>
 		<h1>MBTI 미니 대전</h1>
@@ -36,12 +38,12 @@
     	db에 없으면 저장이 되는데 , 여기서 확인을 하고  -->
     
     <c:choose>
-      <c:when test="${ !canRegister }">
-         <button id="deleteBtn" disabled="disabled">삭제하기</button>
+      <c:when test="${ isExist }">
+      	 <button onClick="location.href='/springmbti/deleteCharacter'">삭제하기</button>
       </c:when>
       
       <c:otherwise>
-         <button id="deleteBtn">삭제하기</button>
+         <button disabled="disabled">삭제하기</button>
       </c:otherwise>
       
    </c:choose>
@@ -58,6 +60,10 @@
     <a href="/springmbti/searchBattleUser"><button>대결하기</button></a>
     <br><br>
     <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
+    <br><br>
+	<form action="/springmbti/myPageDeleteUser" method="post">  
+    <button>회원탈퇴 (test)</button></form> 
+    <!-- 탈퇴 모달 넣기 -->
     
 </body>
 </html>
