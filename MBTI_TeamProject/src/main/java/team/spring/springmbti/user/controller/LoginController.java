@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -19,6 +20,7 @@ import team.spring.springmbti.user.vo.User;
 
 @Controller
 @SessionAttributes(value= {"myUser"})
+@RequestMapping(value="login")
 public class LoginController {
 	
 	@Autowired
@@ -38,7 +40,7 @@ public class LoginController {
 		return user;
 	}
 	
-	@GetMapping("login")
+	@GetMapping
     public String home(@RequestParam(value = "code", required = false) String code,Model model,@ModelAttribute("myUser") User user) throws Exception{
         log.debug("#########" + code);
         String access_Token = kakaoservice.getKakaoAccessToken(code);
