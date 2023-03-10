@@ -4,10 +4,13 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
+import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.user.vo.User;
 
+@Service
 public class BattleService {
 
 	public double adAttack(CharacterInfo a, CharacterInfo d, String aUser, String dUser) {
@@ -77,7 +80,7 @@ public class BattleService {
 		}
 		return dmg;
 	}
-	public String battle(CharacterInfo challengeCharacter, CharacterInfo defenceCharacter, User challengeUser,
+	public BattleLog battle(CharacterInfo challengeCharacter, CharacterInfo defenceCharacter, User challengeUser,
 			User defenceUser) {
 		
 		String challengerName = challengeUser.getUserName();

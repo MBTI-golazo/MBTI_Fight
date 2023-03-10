@@ -43,4 +43,10 @@ public class UserService {
 		return count;
 	}
 
+	public User getUserInfo(String battleUserNum) {
+		
+		User user = dao.getUserInfo(battleUserNum);
+		return user;
+	}
+
 }
