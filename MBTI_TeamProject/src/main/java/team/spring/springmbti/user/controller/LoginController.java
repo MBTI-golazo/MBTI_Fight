@@ -63,9 +63,9 @@ public class LoginController {
         user.setUserProfile(userProfile);
         
         boolean canRegister = loginservice.checkEmail(userEmail);
-        
+        boolean	isExist = loginservice.checkCharacter(userEmail);
         model.addAttribute("canRegister",canRegister);
-        
+        model.addAttribute("isExist",isExist);
         if(canRegister) {
         	loginservice.userRegistration(user);
         }else {
@@ -75,14 +75,6 @@ public class LoginController {
         
         return "myPage";
     }
-	 
-	@GetMapping("test")
-	public String myTest() {
-		
-		
-		
-		return "resultPage";
-	}
 	
 	
 }
