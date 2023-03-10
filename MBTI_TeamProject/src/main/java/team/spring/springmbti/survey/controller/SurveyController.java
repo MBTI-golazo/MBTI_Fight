@@ -39,10 +39,32 @@ public class SurveyController {
 		return "survey/survey1";
 	}
 	
+	@PostMapping("surveytwo")
+	public String handler1(Model model) {
+		log.debug("handler1() 호출 - 일단연습");
+		
+		
+		return "survey/survey2";
+	}
 	
+	@PostMapping("surveythree")
+	public String handler2(Model model) {
+		log.debug("handler1() 호출 - 일단연습");
+		
+		
+		return "survey/survey3";
+	}
+	
+	@PostMapping("surveyfour")
+	public String handler3(Model model) {
+		log.debug("handler1() 호출 - 일단연습");
+		
+		
+		return "survey/survey4";
+	}
 	
 	@PostMapping("surveyone1")
-	public void handler1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
@@ -56,8 +78,23 @@ public class SurveyController {
 		response.getWriter().write(find);
 	}	
 	
-	@PostMapping("surveyone3")
-	public void handler3(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@PostMapping("surveytwo1")
+	public void handler02(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		log.debug("handler1() 호출 - 프로그레스바시작");
+		request.setCharacterEncoding("UTF-8");
+		int qnum = Integer.parseInt(request.getParameter("qnum"));
+		int onum = Integer.parseInt(request.getParameter("onum"));
+
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("qnum", qnum);
+		jsonObject.addProperty("onum", onum);
+		String find = gson.toJson(jsonObject);
+		response.getWriter().write(find);
+	}	
+	
+	@PostMapping("sbutton1")
+	public void handler001(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
@@ -70,4 +107,7 @@ public class SurveyController {
 		String find = gson.toJson(jsonObject);
 		response.getWriter().write(find);
 	}
+	
+	
+	
 }

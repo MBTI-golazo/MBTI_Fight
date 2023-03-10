@@ -69,7 +69,7 @@ label {
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<form action="surveyfour" method="post">
+	<form action="/springmbti/survey/surveyfour" method="post">
 		<input type="submit" value="제출">
 	</form>
 	</div>	
