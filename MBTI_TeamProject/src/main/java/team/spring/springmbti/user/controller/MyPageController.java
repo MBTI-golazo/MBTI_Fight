@@ -19,7 +19,7 @@ import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
 @Controller
-@SessionAttributes(value= { "myCharacter" })
+@SessionAttributes(value= { "myCharacter","myUser" })
 public class MyPageController {
 	
 	Logger log = LogManager.getLogger("case3");
@@ -34,6 +34,11 @@ public class MyPageController {
 	public CharacterInfo createCharacter() {
 		CharacterInfo character = new CharacterInfo();
 		return character;
+	}
+	@ModelAttribute("myUser")
+	public User putUser() {
+		User user = new User();
+		return user;
 	}
 	
 	@GetMapping(value = "myPage")
@@ -52,9 +57,9 @@ public class MyPageController {
 	}
 	
 	@GetMapping(value = "deleteCharacter")
-	public String deleteCharacter(HttpSession session) {
+	public String deleteCharacter(HttpSession session,@ModelAttribute("myUser") User user) {
 		
-		User user = (User)session.getAttribute("myUser");
+		user = (User)session.getAttribute("myUser");
 		int userNum = service.getUserNum(user);
 		int userCharacterNum = service.getUserCharacterNum(userNum);
 		int count = service.deleteCharacter(userCharacterNum);

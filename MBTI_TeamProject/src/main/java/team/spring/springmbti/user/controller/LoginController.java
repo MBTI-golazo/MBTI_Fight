@@ -63,13 +63,15 @@ public class LoginController {
         user.setUserProfile(userProfile);
         
         boolean canRegister = loginservice.checkEmail(userEmail);
-        boolean	isExist = loginservice.checkCharacter(userEmail);
+        
         model.addAttribute("canRegister",canRegister);
-        model.addAttribute("isExist",isExist);
+        
         if(canRegister) {
         	loginservice.userRegistration(user);
         }else {
         	log.debug("이미 생성된 아이디가 존재합니다.");
+        	boolean	isExist = loginservice.checkCharacter(userEmail);
+        	model.addAttribute("isExist",isExist);
         }
         model.addAttribute("user", user);
         

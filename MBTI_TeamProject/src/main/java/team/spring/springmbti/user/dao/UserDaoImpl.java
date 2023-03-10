@@ -70,7 +70,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int characterCheck(String userEmail) {
-		int characterNum = session.selectOne("myUser.getUserCharacter", userEmail);
+		log.debug("캐릭터 존재 유무 확인용" + userEmail);
+		int characterNum = session.selectOne("myUser.getUserCharacterByEmail", userEmail);
 		return characterNum;
 	}
 

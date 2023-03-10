@@ -23,6 +23,10 @@
       select userCharacter from users where userNum=#{userNum}
    </select>
    
+   <select id="getUserCharacterByEmail" parameterType="String" resultType="Integer">
+      select userCharacter from users where userEmail=#{userEmail}
+   </select>
+   
    <update id="deleteUser" parameterType="HashMap">
    	  update users set isOut='Y',outDate=#{outDate} where userEmail=#{userEmail}
    </update>
