@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import team.spring.springmbti.battle.service.BattleService;
 import team.spring.springmbti.battle.vo.BattleLog;
@@ -18,6 +20,7 @@ import team.spring.springmbti.user.vo.User;
 
 @Controller
 @RequestMapping(value = "battle")
+@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
 public class BattleController {
 
 	Logger log = LogManager.getLogger("case3");
@@ -25,18 +28,34 @@ public class BattleController {
 	@Autowired
 	BattleService service;
 	
-	@GetMapping(value = "battle")
-	public String battle(Model model) {
+	@ModelAttribute("myCharacter")
+	public CharacterInfo createCharacter() {
+		CharacterInfo character = new CharacterInfo();
+		return character;
+	}
+	@ModelAttribute("myUser")
+	public User putUser() {
+		User user = new User();
+		return user;
+	}
+	
+	@ModelAttribute("battleCharacter")
+	public CharacterInfo createBattleCharacter() {
+		CharacterInfo character = new CharacterInfo();
+		return character;
+	}
+	@ModelAttribute("battleUser")
+	public User putBattleUser() {
+		User user = new User();
+		return user;
+	}
+	
+	@GetMapping
+	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
+			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser) {
 		log.debug("싸우기");
 		
-		CharacterInfo challengeCharacter = new CharacterInfo(1, 100, 11, 9, 6, 4, 11, 10, 10, 30, 5);
-		CharacterInfo defenceCharacter = new CharacterInfo(2, 100, 9, 11, 4, 6, 10, 10, 10, 30 ,5);
-		
-		User challengeUser = new User();
-		challengeUser.setUserName("도전자");
-		User defenceUser = new User();
-		defenceUser.setUserName("방어자");
-		BattleLog battleLog = service.battle(challengeCharacter, defenceCharacter, challengeUser, defenceUser);
+		BattleLog battleLog = service.battle(myCharacter, battleCharacter, myUser, battleUser);
 		return null;
 	}
 	
