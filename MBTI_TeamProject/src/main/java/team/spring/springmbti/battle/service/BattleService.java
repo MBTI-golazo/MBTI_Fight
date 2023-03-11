@@ -44,6 +44,7 @@ public class BattleService {
 			log.debug("회피point 100이상이므로 miss!");
 			dmg = 0;
 		}
+		dmg = Math.floor(dmg);
 		return dmg;
 	}
 	
@@ -78,6 +79,7 @@ public class BattleService {
 			log.debug("회피point 100이상이므로 miss!");
 			dmg = 0;
 		}
+		dmg = Math.floor(dmg);
 		return dmg;
 	}
 	public BattleLog battle(CharacterInfo challengeCharacter, CharacterInfo defenceCharacter, User challengeUser,
@@ -87,13 +89,16 @@ public class BattleService {
 		String defenderName = defenceUser.getUserName();
 		User winner = null;
 		User loser = null;
-		for(int cnt = 0; cnt <= 10; cnt++) {
+		for(int cnt = 0; cnt <= 2; cnt++) {
 			Logger log = LogManager.getLogger("case3");
 			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				log.debug(challengeUser + "턴!");
 				double adDmg = adAttack(challengeCharacter, defenceCharacter, challengerName, defenderName);
+				log.debug(challengerName + "의 ad데미지 : " + adDmg + "으로 공격!");
+				log.debug(defenderName +"이" + adDmg +"의 공격을받아 잔여HP : " + defenceCharacter.getCharacterHP() + " - " + adDmg);
 				defenceCharacter.setCharacterHP(defenceCharacter.getCharacterHP() - adDmg);
+				log.debug(defenderName + "의 잔여 HP : " + defenceCharacter.getCharacterHP());
 				if (defenceCharacter.getCharacterHP() <= 0) {
 					log.debug(defenderName + " 의 잔여 HP 가 0이하이므로 대전을 종료합니다");
 					log.debug(challengerName + " 승리 !");
@@ -103,7 +108,10 @@ public class BattleService {
 				}
 				log.debug(defenderName + "잔여 HP" + defenceCharacter.getCharacterHP());
 				double apDmg = apAttack(challengeCharacter, defenceCharacter, challengerName, defenderName);
+				log.debug(challengerName + "의 ap데미지 : " + apDmg + "으로 공격!");
+				log.debug(defenderName +"이" + apDmg +"의 공격을받아 잔여HP : " + defenceCharacter.getCharacterHP() + " - " + apDmg);
 				defenceCharacter.setCharacterHP(defenceCharacter.getCharacterHP() - apDmg);
+				log.debug(defenderName + "의 잔여 HP : " + defenceCharacter.getCharacterHP());
 				if (defenceCharacter.getCharacterHP() <= 0) {
 					log.debug(defenderName + " 의 잔여 HP 가 0이하이므로 대전을 종료합니다");
 					log.debug(challengerName + " 승리 !");
@@ -117,8 +125,10 @@ public class BattleService {
 			} else {
 				log.debug(defenceUser + "턴!");
 				double adDmg = adAttack(defenceCharacter, challengeCharacter, defenderName, challengerName);
+				log.debug(defenderName + "의 ad데미지 : " + adDmg + "으로 공격!");
+				log.debug(challengerName +"이" + adDmg +"의 공격을받아 잔여HP : " + challengeCharacter.getCharacterHP() + " - " + adDmg);
 				challengeCharacter.setCharacterHP(challengeCharacter.getCharacterHP() - adDmg);
-				log.debug(challengeUser + "잔여 HP" + challengeCharacter.getCharacterHP());
+				log.debug(challengerName + "의 잔여 HP : " + defenceCharacter.getCharacterHP());
 				if (defenceCharacter.getCharacterHP() <= 0) {
 					log.debug(challengerName + " 의 잔여 HP 가 0이하이므로 대전을 종료합니다");
 					log.debug(defenderName + " 승리 !");
@@ -128,8 +138,10 @@ public class BattleService {
 				}
 				log.debug(challengerName + "잔여 HP" + challengeCharacter.getCharacterHP());
 				double apDmg = apAttack(defenceCharacter, challengeCharacter, defenderName, challengerName);
+				log.debug(defenderName + "의 ad데미지 : " + apDmg + "으로 공격!");
+				log.debug(challengerName +"이" + apDmg +"의 공격을받아 잔여HP : " + challengeCharacter.getCharacterHP() + " - " + apDmg);
 				challengeCharacter.setCharacterHP(challengeCharacter.getCharacterHP() - apDmg);
-				log.debug(challengeUser + "잔여 HP" + challengeCharacter.getCharacterHP());
+				log.debug(challengerName + "의 잔여 HP : " + defenceCharacter.getCharacterHP());
 				if (defenceCharacter.getCharacterHP() <= 0) {
 					log.debug(challengerName + " 의 잔여 HP 가 0이하이므로 대전을 종료합니다");
 					log.debug(defenceUser + " 승리 !");

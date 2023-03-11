@@ -22,7 +22,7 @@
 	명중률 - ${ sessionScope.myCharacter.characterHitRate } <br>
 	회피율 - ${ sessionScope.myCharacter.characterAvoidanceRate } <br>
 	크리티컬 확률 - ${ sessionScope.myCharacter.characterCritical } <br>
-	기본추가공격력 - ${ sessionScope.myCharacter.characterHP } <br>
+	기본추가공격력 - ${ sessionScope.myCharacter.characterAdditionalDmg } <br>
 	
 	<br><br>
 	<h1>상대</h1>
@@ -39,10 +39,10 @@
 	명중률 - ${ sessionScope.battleCharacter.characterHitRate } <br>
 	회피율 - ${ sessionScope.battleCharacter.characterAvoidanceRate } <br>
 	크리티컬 확률 - ${ sessionScope.battleCharacter.characterCritical } <br>
-	기본추가공격력 - ${ sessionScope.battleCharacter.characterHP } <br>
+	기본추가공격력 - ${ sessionScope.battleCharacter.characterAdditionalDmg } <br>
 	
 	<br><br>
-	<form action="/springmbti/battle/prepareBattle" method="get">
+	<form action="/springmbti/battle" method="get">
 		장소를 고르세요
 		<select>
 			<option value="0">없음</option>
