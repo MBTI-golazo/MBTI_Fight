@@ -52,11 +52,11 @@ public class BattleController {
 	
 	@GetMapping
 	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
-			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser) {
+			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) {
 		log.debug("싸우기");
 		
-		BattleLog battleLog = service.battle(myCharacter, battleCharacter, myUser, battleUser);
-		return null;
+		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
+		return "battleEnd";
 	}
 	
 	@GetMapping(value = "searchBattleUser")
