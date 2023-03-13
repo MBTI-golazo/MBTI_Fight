@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.user.vo.User;
 
 
@@ -86,6 +87,19 @@ public class UserDaoImpl implements UserDao {
 		User user = session.selectOne("myUser.getUserInfoByUserNum", battleUserNum);
 		return user;
 	}
+
+	@Override
+	public int updateWinnerPoint(BattleLog battleLog) {
+		int count = session.update("myUser.updateWinnerPoint", battleLog);
+		return count;
+	}
+
+	@Override
+	public int updateLoserPoint(BattleLog battleLog) {
+		int count = session.update("myUser.updateLoserPoint", battleLog);
+		return count;
+	}
+
 	
 	
 	

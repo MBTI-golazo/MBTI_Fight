@@ -24,6 +24,7 @@
 	 	
 	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="User"/>
 	 	<typeAlias type="team.spring.springmbti.character.vo.CharacterInfo" alias="CharacterInfo"/>
+	 	<typeAlias type="team.spring.springmbti.battle.vo.BattleLog" alias="battleLog"/>
 	 	<typeAlias type="team.spring.springmbti.mbti.vo.MBTIResult" alias="MBTIResult"/>
 	 	
 

@@ -10,10 +10,28 @@ import lombok.NoArgsConstructor;
 public class BattleLog {
 
 	private int logNum;
+	private String winnerNum;
+	private String loserNum;
 	private String winnerName;
 	private String loserName;
 	private String battleField;
-	private int winPoing;
-	private int losePoing;
+	private int winPoint;
+	private int losePoint;
+	
+	public BattleLog(String winnerNum, String loserNum, String winnerName, String loserName, String battleField,
+			int winPoint, int losePoint) {
+		super();
+		this.winnerNum = winnerNum;
+		this.loserNum = loserNum;
+		this.winnerName = winnerName;
+		this.loserName = loserName;
+		this.battleField = battleField;
+		this.winPoint = winPoint;
+		this.losePoint = losePoint;
+	}
+	
+	
+	
+	
 }
 

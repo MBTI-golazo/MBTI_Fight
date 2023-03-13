@@ -1,5 +1,6 @@
 package team.spring.springmbti.user.dao;
 
+import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.user.vo.User;
 
 public interface UserDao {
@@ -19,5 +20,10 @@ public interface UserDao {
 	int deleteCharacter(int userCharacterNum);
 
 	User getUserInfo(String battleUserNum);
+
+	int updateWinnerPoint(BattleLog battleLog);
+
+	int updateLoserPoint(BattleLog battleLog);
+
 	
 }
