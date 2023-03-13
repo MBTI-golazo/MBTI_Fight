@@ -5,13 +5,16 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
@@ -24,6 +27,7 @@ import team.spring.springmbti.user.vo.User;
  * Handles requests for the application home page.
  */
 @Controller
+//@SessionAttributes(value= {"myUser"})
 @RequestMapping(value = "survey")
 public class SurveyController {
 	
@@ -64,7 +68,7 @@ public class SurveyController {
 		return "survey/survey4";
 	}
 	
-	@PostMapping("surveyone1")
+	@GetMapping("surveyone1")
 	public void handler01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
@@ -94,8 +98,8 @@ public class SurveyController {
 		response.getWriter().write(find);
 	}	
 	
-	@PostMapping("sbutton1")
-	public void handler001(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@PutMapping("sbutton1")
+	public void handler001(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler1() 호출 - 프로그레스바시작");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
@@ -106,12 +110,16 @@ public class SurveyController {
 		int qtotal = qone + qtwo + qthree + qfour + qfive;
 		int total = qtotal - 15;
 		int nqtotal = total*-1;
-		String email = new String("okay@naver.com");
+		// String email = new String("seaha1223@naver.com");
+		
+		
+		
 		User user = new User();
-		user.setUserEmail(email);
+		user = (User)session.getAttribute("myUser");
+		// user.setUserEmail(email);
 		user.setUserI(nqtotal);
 		user.setUserE(qtotal);
-		
+		log.debug("괜찮슴");
 		
 		surveyservice.updateScore(user);
 		

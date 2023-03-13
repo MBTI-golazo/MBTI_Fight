@@ -59,11 +59,11 @@ display:none;}
 	</div>
 	<br>
 	<div class="box4" style="font-family:verdana; text-align: center">
-	<h3>2. 다른 사람에게 자신이 어떤 사람으로 보일지 걱정하지 않는 편이다.</h3>
-	<input type="radio" name="myRadio2" value="0">매우 아니다 
-	<input type="radio" name="myRadio2" value="1">아니다
-	<input type="radio" name="myRadio2" value="2">그렇다
-	<input type="radio" name="myRadio2" value="3">매우 그렇다
+	<h3>2. 대부분의 시간을 혼자서 일할 수 있는 직업을 원한다.</h3>
+	<input type="radio" name="myRadio2" value="3">매우 아니다 
+	<input type="radio" name="myRadio2" value="2">아니다
+	<input type="radio" name="myRadio2" value="1">그렇다
+	<input type="radio" name="myRadio2" value="0">매우 그렇다
 	<input type="radio" id="radio-previous2" name="myRadio2" value="-100" checked="true"/>
 	</div>
 	<br>
@@ -102,69 +102,82 @@ display:none;}
 </body>
 <script>
 $("input[name=myRadio1]").mouseup(function() {
-	 oldnum= $('input[name=myRadio1]:checked').val();
-	
+	 oldnum = $('input[name=myRadio1]:checked').val();
+	 
 }).change(function () {
-	var changenum = $('input[name=myRadio1]:checked').val();
+	var changenum1 = $('input[name=myRadio1]:checked').val();
 	
-	var eoldValue = Number($('#efile').attr("value"));
+	var eoldValue1 = Number($('#efile').attr("value"));
 	
-	var ioldValue = Number($('#ifile').attr("value"));
+	var ioldValue1 = Number($('#ifile').attr("value"));
 	
 	$.ajax({
 		url : "surveyone1",
-		type : "POST",
+		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum,		
-		 qnum : changenum
+		 onum : oldnum ,		
+		 qnum : changenum1
 		},
 		success : function(data) {
 			var values = Object.values(data);
-			console.log(values);
+			
 			if (data['onum'] == 3) {
-				console.log('3');
-				var eold = eoldValue - 20;
+				//console.log('3');
+				var eold1 = eoldValue1 - 20;
 				
-				$('#efile').attr("value",eold);
+				$('#efile').attr("value",eold1);
 			} else if (data['onum'] == 2) {
-				console.log('2');
-				var eold = eoldValue - 10;
-				$('#efile').attr("value",eold);	
+				//console.log('2');
+				var eold1 = eoldValue1 - 10;
+				$('#efile').attr("value",eold1);	
+				
+				var iold1 = ioldValue1 - 10;
+				
+				$('#ifile').attr("value",iold1);
 			} else if (data['onum'] == 1) {
-				console.log('1');
-				var iold = ioldValue - 10;
-				$('#ifile').attr("value",iold);
+				//console.log('1');
+				var iold1 = ioldValue1 - 10;
+				$('#ifile').attr("value",iold1);
+				var eold1 = eoldValue1 - 10;
+				$('#efile').attr("value",eold1);	
+				
 			} else if (data['onum'] == 0) {
-				console.log('0');
-				var iold = ioldValue - 20;
-				$('#ifile').attr("value",iold);
+				//console.log('0');
+				var iold1 = ioldValue1 - 20;
+				$('#ifile').attr("value",iold1);
 			} else {
 				console.log('-1');
 			}
 			
-			var eold = Number($('#efile').attr("value"));
+			var eold11 = Number($('#efile').attr("value"));
 			
-			var iold = Number($('#ifile').attr("value"));
+			var iold11 = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
-				console.log('3');
-				var number = eold + 20;
-				$('#efile').attr("value",number);
+				//console.log('3');
+				var number1 = eold11 + 20;
+				$('#efile').attr("value",number1);
 			} else if(data['qnum']==2) {
-				console.log('2');
-				var number = eold + 10;
-				$('#efile').attr("value",number);
+				//console.log('2');
+				var number1 = eold11 + 10;
+				$('#efile').attr("value",number1);
+				var number1 = iold11 + 10;
+				$('#ifile').attr("value",number1);
+				
 			} else if(data['qnum']==1) {
-				console.log('1');
-				var number = iold + 10;
-				$('#ifile').attr("value",number);
+				//console.log('1');
+				var number1 = iold11 + 10;
+				$('#ifile').attr("value",number1);
+				var number1 = eold11 + 10;
+				$('#efile').attr("value",number1);
+				
 			} else if(data['qnum']==0) {
-				console.log('0');
-				var number = iold + 20;
-				$('#ifile').attr("value",number);
+				//console.log('0');
+				var number1 = iold11 + 20;
+				$('#ifile').attr("value",number1);
 		} else {
 			console.log('-1');
 		}	
@@ -214,68 +227,81 @@ $("input[name=myRadio1]").mouseup(function() {
 
 $("input[name=myRadio2]").mouseup(function() {
 	 oldnum= $('input[name=myRadio2]:checked').val();
-	
+	//console.log(oldnum2);
 }).change(function () {
-	var changenum = $('input[name=myRadio2]:checked').val();
+	var changenum2 = $('input[name=myRadio2]:checked').val();
+	//console.log(changenum2);
+	var eoldValue2 = Number($('#efile').attr("value"));
 	
-	var eoldValue = Number($('#efile').attr("value"));
-	
-	var ioldValue = Number($('#ifile').attr("value"));
+	var ioldValue2 = Number($('#ifile').attr("value"));
 	
 	$.ajax({
 		url : "surveyone1",
-		type : "POST",
+		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
 		 onum : oldnum,		
-		 qnum : changenum
+		 qnum : changenum2
 		},
 		success : function(data) {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				console.log('3');
-				var eold = eoldValue - 20;
+				//console.log('3');
+				var eold2 = eoldValue2 - 20;
 				
-				$('#efile').attr("value",eold);
+				$('#efile').attr("value",eold2);
 			} else if (data['onum'] == 2) {
-				console.log('2');
-				var eold = eoldValue - 10;
-				$('#efile').attr("value",eold);	
+				//console.log('2');
+				var eold2 = eoldValue2 - 10;
+				$('#efile').attr("value",eold2);	
+				var iold2 = ioldValue2 - 10;
+				
+				$('#ifile').attr("value",iold2);
 			} else if (data['onum'] == 1) {
-				console.log('1');
-				var iold = ioldValue - 10;
-				$('#ifile').attr("value",iold);
+				//console.log('1');
+				var eold2 = eoldValue2 - 10;
+				$('#efile').attr("value",eold2);
+				var iold2 = ioldValue2 - 10;
+					
+				$('#ifile').attr("value",iold2);
+				
 			} else if (data['onum'] == 0) {
-				console.log('0');
-				var iold = ioldValue - 20;
-				$('#ifile').attr("value",iold);
+				//console.log('0');
+				var iold2 = ioldValue2 - 20;
+				$('#ifile').attr("value",iold2);
 			} else {
 				console.log('-1');
 			}
 			
-			var eold = Number($('#efile').attr("value"));
+			var eold22 = Number($('#efile').attr("value"));
 			
-			var iold = Number($('#ifile').attr("value"));
+			var iold22 = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
-				console.log('3');
-				var number = eold + 20;
-				$('#efile').attr("value",number);
+				//console.log('3');
+				var number2 = eold22 + 20;
+				$('#efile').attr("value",number2);
 			} else if(data['qnum']==2) {
-				console.log('2');
-				var number = eold + 10;
-				$('#efile').attr("value",number);
+				//console.log('2');
+				var number2 = eold22 + 10;
+				$('#efile').attr("value",number2);
+				var number2 = iold22 + 10;
+				
+				$('#ifile').attr("value",number2);
 			} else if(data['qnum']==1) {
-				console.log('1');
-				var number = iold + 10;
-				$('#ifile').attr("value",number);
+				//console.log('1');
+				var number2 = eold22 + 10;
+				$('#efile').attr("value",number2);
+				var number2 = iold22 + 10;
+				
+				$('#ifile').attr("value",number2);
 			} else if(data['qnum']==0) {
-				console.log('0');
-				var number = iold + 20;
-				$('#ifile').attr("value",number);
+				//console.log('0');
+				var number2 = iold22 + 20;
+				$('#ifile').attr("value",number2);
 		} else {
 			console.log('-1');
 		}	
@@ -335,7 +361,7 @@ $("input[name=myRadio3]").mouseup(function() {
 	
 	$.ajax({
 		url : "surveyone1",
-		type : "POST",
+		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
@@ -353,8 +379,12 @@ $("input[name=myRadio3]").mouseup(function() {
 				console.log('2');
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
 				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
 				var iold = ioldValue - 10;
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
@@ -378,9 +408,12 @@ $("input[name=myRadio3]").mouseup(function() {
 				console.log('2');
 				var number = eold + 10;
 				$('#efile').attr("value",number);
-				
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
 				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
 				var number = iold + 10;
 				$('#ifile').attr("value",number);
 				
@@ -448,7 +481,7 @@ $("input[name=myRadio4]").mouseup(function() {
 	
 	$.ajax({
 		url : "surveyone1",
-		type : "POST",
+		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
@@ -467,8 +500,12 @@ $("input[name=myRadio4]").mouseup(function() {
 				console.log('2');
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
 				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
 				var iold = ioldValue - 10;
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
@@ -492,8 +529,12 @@ $("input[name=myRadio4]").mouseup(function() {
 				console.log('2');
 				var number = eold + 10;
 				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
 				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
 				var number = iold + 10;
 				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
@@ -559,7 +600,7 @@ $("input[name=myRadio5]").mouseup(function() {
 	
 	$.ajax({
 		url : "surveyone1",
-		type : "POST",
+		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
@@ -577,9 +618,13 @@ $("input[name=myRadio5]").mouseup(function() {
 			} else if (data['onum'] == 2) {
 				console.log('2');
 				var eold = eoldValue - 10;
-				$('#efile').attr("value",eold);	
+				$('#efile').attr("value",eold);
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
 				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
 				var iold = ioldValue - 10;
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
@@ -603,8 +648,12 @@ $("input[name=myRadio5]").mouseup(function() {
 				console.log('2');
 				var number = eold + 10;
 				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
 				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
 				var number = iold + 10;
 				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
@@ -661,7 +710,7 @@ $("input[name=myRadio5]").mouseup(function() {
 function sbutton1() {
 	$.ajax({
 		url : "sbutton1",
-		type : "POST",
+		type : "PUT",
 		async : "false",
 		dataType : "json",
 		data : { qone: $('input[name=myRadio1]:checked').val(),
