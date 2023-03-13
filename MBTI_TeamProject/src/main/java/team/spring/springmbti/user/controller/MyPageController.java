@@ -1,5 +1,10 @@
 package team.spring.springmbti.user.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,9 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
@@ -68,28 +76,42 @@ public class MyPageController {
 		return "userMyPage";
 	}
 	
-	@GetMapping(value = "deleteCharacter")
-	public String deleteCharacter(HttpSession session,@ModelAttribute("myUser") User user) {
+	@DeleteMapping(value = "character")
+	public void deleteCharacter(HttpSession session,
+			@ModelAttribute("myUser") User user, 
+			HttpServletResponse response,
+			HttpServletRequest request)throws ServletException, IOException {
+		
+		log.debug("@DeleteMapping »£√‚");
+		log.debug("num : " + request.getParameter("num"));
+		
+		request.setCharacterEncoding("UTF-8");
+	    int qone = Integer.parseInt(request.getParameter("num"));
 		
 		user = (User)session.getAttribute("myUser");
+		log.debug("ø©±‚∑Œ ø¿∏È ¡¡∞⁄æÓ");
 		int userNum = service.getUserNum(user);
 		int userCharacterNum = service.getUserCharacterNum(userNum);
+		log.debug(userCharacterNum);		
 		int count = service.deleteCharacter(userCharacterNum);
 		if(count==1) {
-			log.debug("ÏÑ±Í≥µÏ†ÅÏúºÎ°ú Ï∫êÎ¶≠ÌÑ∞ ÏÇ≠Ï†ú ÏôÑÎ£å");
+			log.debug("º∫∞¯¿˚¿∏∑Œ ƒ≥∏Ø≈Õ ªË¡¶ øœ∑·!");
 		}
-		
-		return "myPage";
+		Gson gson = new Gson();
+	    JsonObject jsonObject = new JsonObject();
+	    jsonObject.addProperty("num",qone);
+	    String find = gson.toJson(jsonObject);
+	    response.getWriter().write(find);
 	}
 	 
-	@RequestMapping(value="myPageDeleteUser", method = RequestMethod.POST)
+	@DeleteMapping
 	public String deleteUser(HttpSession session) {
 		
 		User user = (User)session.getAttribute("myUser");
-//			log.debug(user);
+			log.debug(user);
 		String userEmail = user.getUserEmail();
-//			log.debug(userEmail);
-//			log.debug("ÌöåÏõêÏ†ïÎ≥¥ ÏùΩÍ∏∞ ÏÑ±Í≥µ");
+			log.debug(userEmail);
+			log.debug("º∫∞¯¿˚¿∏∑Œ »∏ø¯ ≈ª≈ øœ∑·!");
 		int count = service.deleteUser(userEmail);
 		
 		
@@ -108,4 +130,11 @@ public class MyPageController {
 		model.addAttribute("battleCharacter", character);
 		return "prepBattle";
 	}
+	
+	@PostMapping(value="moveSurvey")
+	   public String moveSurvey() {
+	      log.debug("º∫∞¯¿˚¿Œ º≥πÆ¡∂ªÁ ¿Ãµø!");
+	      
+	      return "survey/survey1";
+	   }
 }
