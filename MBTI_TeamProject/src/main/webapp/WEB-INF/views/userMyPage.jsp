@@ -10,7 +10,7 @@
 	<h1>마이 페이지</h1>
 	이름 - ${ sessionScope.myUser.userName } <br>
 	이메일 - ${sessionScope.myUser.userEmail } <br>
-	내 유저 번호 - ${ requestScope.myNum } <br>
+	내 유저 번호 - ${ sessionScope.myUser.userNum } <br>
 	<h3>내 캐릭터 정보</h3>
 	HP - ${ sessionScope.myCharacter.characterHP } <br>
 	물리공격력 - ${ sessionScope.myCharacter.characterAD } <br>
@@ -21,7 +21,7 @@
 	명중률 - ${ sessionScope.myCharacter.characterHitRate } <br>
 	회피율 - ${ sessionScope.myCharacter.characterAvoidanceRate } <br>
 	크리티컬 확률 - ${ sessionScope.myCharacter.characterCritical } <br>
-	기본추가공격력 - ${ sessionScope.myCharacter.characterHP } <br>
+	기본추가공격력 - ${ sessionScope.myCharacter.characterAdditionalDmg } <br>
 	
 	<h3>대결 하기</h3>
 	<form action="/springmbti/mypage/battleuser">

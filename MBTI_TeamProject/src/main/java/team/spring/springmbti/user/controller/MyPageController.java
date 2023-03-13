@@ -59,10 +59,11 @@ public class MyPageController {
 		
 		User user = (User)session.getAttribute("myUser");
 		int userNum = service.getUserNum(user);
+		user = service.getUserInfo(Integer.toString(userNum));
 		int userCharacterNum = service.getUserCharacterNum(userNum);
 		character = cService.getCharacter(userCharacterNum);
 		log.debug(character);
-		model.addAttribute("myNum", userNum);
+		model.addAttribute("myUser", user);
 		model.addAttribute("myCharacter", character);
 		
 		return "userMyPage";
