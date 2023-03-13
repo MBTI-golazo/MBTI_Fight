@@ -4,6 +4,13 @@ import team.spring.springmbti.user.vo.User;
 
 public interface SurveyDao {
 
-	//Member idCheck(String memberId);
-	int updateSurvey(User user);
+	
+	int updateSurveyOne(User user);
+	
+	int updateSurveyTwo(User user);
+	
+	int updateSurveyThree(User user);
+	
+	int updateSurveyFour(User user);
+	
 }

@@ -56,7 +56,11 @@
 	</form>
 	<!-- 모달넣어야 하고  -->
 	
-    <button>설문조사</button>
+    <!--  <button>설문조사</button>-->
+    
+    <form action="/springmbti/survey/surveyone" method="post">
+		<input type="submit" value="설문조사">
+    
     <a href="/springmbti/mypage/searchBattleUser"><button>대결하기</button></a>
     <br><br>
     <a href="/springmbti/test">결과 페이지로 이동(test용)</a>
